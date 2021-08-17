@@ -202,8 +202,77 @@ else{
 			array_push($isbn,'9788430789900');
 			array_push($volum, 3);
 		}
+	
+		else
+		{
+				$prefijo=strtoupper($tipus);
+
+				array_push($titols,'Anglés');
+				array_push($identificador, $prefijo. '_ANG_1_');
+				array_push($isbn,'9789963516476');
+				array_push($volum, 1);
+				array_push($titols,'Història volum 1');
+				array_push($identificador, $prefijo.'_HIS_VAL_1_');
+				array_push($isbn,'9788468236780');
+				array_push($volum, 1);
+				array_push($titols,'Història volum 2');
+				array_push($identificador, $prefijo. '_HIS_VAL_2_');
+				array_push($isbn,'9788468236780');
+				array_push($volum, 2);
+				array_push($titols,'Llengua castellana');
+				array_push($identificador, $prefijo.'_CAS_1_');
+				array_push($isbn,'9788468039992');
+				array_push($volum, 1);
+				array_push($titols,'Valencià volum 1');
+				array_push($identificador, $prefijo. '_VAL_1_');
+				array_push($isbn,'9788430791705');
+				array_push($volum, 1);
+			
+				if (strcmp($tipus,'4esoac') == 0){
+					array_push($titols,'Biologia i Geologia');
+					array_push($identificador, $prefijo. '_BIO_1_');
+					array_push($isbn,'9788491310273');
+					array_push($volum, 1);
+					array_push($titols, 'Física i Química');
+					array_push($identificador, '4ESOAC_FIQ_1_');
+					array_push($isbn,'9788468237763');
+					array_push($volum, 1);
+					array_push($titols,'Matemàtiques');
+					array_push($identificador, '4ESOAC_MAT_1_');
+					array_push($isbn,'9788467587371');
+					array_push($volum, 1);
+					
+				}
+				else{
+					if (strcmp($tipus,'4esoal') == 0){
+						array_push($titols,'Matemàtiques');
+						array_push($identificador, '4ESOAL_MAT_1_');
+						array_push($isbn,'9788467587371');
+						array_push($volum, 1);
+						array_push($titols,'Llatí');
+						array_push($identificador, '4ESOAL_LLA_1_');
+						array_push($isbn,'9788496977273');
+						array_push($volum, 1);
+						
+					}
+					else{
+						if (strcmp($tipus,'4esoap') == 0){
+							
+							
+								array_push($titols,'Matemàtiques');
+								array_push($identificador, '4ESOAP_MAT_1_');
+								array_push($isbn,'9788490587409');
+								array_push($volum, 1);
+								array_push($titols,'CAAP');
+								array_push($identificador, '4ESOAP_CAAP_1_');
+								array_push($isbn,'9780190508043');
+								array_push($volum, 1);
+							
+						}
+					}
+				}
+		}
 	}
 }
-
 require 'views/crearLot.view.php';
 

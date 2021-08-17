@@ -15,7 +15,7 @@
   
   <br>
   <form action="assignarPuntuacio.php" method="post">
-		<center> <h2 class="texto"> Llibres del lot de <?php echo $numero; ?> </h2>
+		<center> <h2 class="texto"> Llibres del lot de <?php echo $tipus; echo " : " .$numero; ?> </h2>
       <br><br>
 		<table border="1" bgcolor="white">
       <tr>

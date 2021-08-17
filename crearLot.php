@@ -85,11 +85,56 @@ if (strcmp($tipus,'1eso') == 0){
 
 
 }
-// Indicarem els llibres que formen part de cada grups
-//llibres = array();
- 
+else{
+	if (strcmp($tipus,'2eso') == 0){
+	array_push($titols, 'Física i Química volum 1');
+	array_push($identificador, '2ESO_FIQ_1_');
+	array_push($isbn,'9788414003220');
+	array_push($volum, 1);
+	array_push($titols, 'Física i Química volum 2');
+	array_push($identificador, '2ESO_FIQ_2_');
+	array_push($isbn,'9788414003220');
+	array_push($volum, 2);
+	array_push($titols,'Història volum 1');
+	array_push($identificador, '2ESO_HIS_VAL_1_');
+	array_push($isbn,'9788469815335');
+	array_push($volum, 1);
+	array_push($titols,'Història volum 2');
+	array_push($identificador, 'ESO_HIS_VAL_2_');
+	array_push($isbn,'9788469815335');
+	array_push($volum, 2);
+	array_push($titols,'Història volum 3');
+	array_push($identificador, 'ESO_HIS_VAL_3_');
+	array_push($isbn,'9788469815335');
+	array_push($volum, 3);
+	array_push($titols,'Llengua castellana');
+	array_push($identificador, '2ESO_CAS_1_');
+	array_push($isbn,'9788468040073');
+	array_push($volum, 1);
+	array_push($titols,'Matemàtiques');
+	array_push($identificador, '2ESO_MAT_1_');
+	array_push($isbn,'9788467587364');
+	array_push($volum, 1);
+	array_push($titols,'Anglés');
+	array_push($identificador, '2ESO_ANG_1_');
+	array_push($isbn,'9780194666244');
+	array_push($volum, 1);
+	array_push($titols,'Valencià volum 1');
+	array_push($identificador, '2ESO_VAL_1_');
+	array_push($isbn,'9788430790876');
+	array_push($volum, 1);
+	array_push($titols,'Valencià volum 2');
+	array_push($identificador, '2ESO_VAL_2_');
+	array_push($isbn,'9788430790876');
+	array_push($volum, 2);
+	array_push($titols,'Valencià volum 3');
+	array_push($identificador, '2ESO_VAL_3_');
+	array_push($isbn,'9788430790876');
+	array_push($volum, 3);
 
-// Obtenemos las tutorias que tienen libros
+
+	}
+}
 
 require 'views/crearLot.view.php';
 

@@ -19,7 +19,8 @@
       <br><br>
 		<table border="1" bgcolor="white">
       <tr>
-        <td> Identificador </td><td>Llibre</td><td>Estat</td>
+        <td> <input type="hidden" name="lot" value="<?php echo $tipus."_".$numero; ?>">
+        Identificador </td><td>Llibre</td><td>Estat</td>
       </tr>
       <?php
       $i=0;
@@ -29,6 +30,9 @@
         $id=$identificador[$i].$numero;
         echo "<input type=\"hidden\" name=identificador[] value=\"". $id. "\">";
         echo $id;
+        echo "<input type=\"hidden\" name=isbn[] value=\"". $isbn[$i]. "\">";
+        echo "<input type=\"hidden\" name=volumen[] value=\"". $volumen[$i]. "\">";
+
         echo "</td>";
         echo "<td>";
         echo $titols[$i];

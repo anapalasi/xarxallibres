@@ -15,11 +15,43 @@
   
   <br>
   <form action="assignarPuntuacio.php" method="post">
-		<center> <h2 class="texto"> Llibres del lot <?php echo $numero; ?> </h2>
-		
+		<center> <h2 class="texto"> Llibres del lot de <?php echo $numero; ?> </h2>
+      <br><br>
+		<table border="1" bgcolor="white">
+      <tr>
+        <td> Identificador </td><td>Llibre</td><td>Estat</td>
+      </tr>
+      <?php
+      $i=0;
+      while ($i<count($titols)){
+        echo "<tr>";
+        echo "<td>";
+        $id=$identificador[$i].$numero;
+        echo "<input type=\"hidden\" name=identificador[] value=\"". $id. "\">";
+        echo $id;
+        echo "</td>";
+        echo "<td>";
+        echo $titols[$i];
+        echo "</td>";
+        echo "<td>";
+        echo "<select name=estat[]>";
+        echo "<option value=\"3\" selected";
+        echo "> MB </option>";
+        echo "<option value=\"2\">";
+        echo " B </option>";
+        echo "<option value=\"1\"";
+        echo "> R </option>";
+        echo "</select>";
+        echo "</td>";
+        echo "</tr>";
+        $i++;
+      }
+      ?>
+    </table>
+    <br><br>
 	
   <button type="submit" value="submit"> Crear lot </button></form>
-</form>-->
+</form>
  <center> <a href="<?php
   if ($usuario['rol'] == 'administrador')
   {

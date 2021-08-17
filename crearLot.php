@@ -100,11 +100,11 @@ else{
 	array_push($isbn,'9788469815335');
 	array_push($volum, 1);
 	array_push($titols,'Història volum 2');
-	array_push($identificador, 'ESO_HIS_VAL_2_');
+	array_push($identificador, '2ESO_HIS_VAL_2_');
 	array_push($isbn,'9788469815335');
 	array_push($volum, 2);
 	array_push($titols,'Història volum 3');
-	array_push($identificador, 'ESO_HIS_VAL_3_');
+	array_push($identificador, '2ESO_HIS_VAL_3_');
 	array_push($isbn,'9788469815335');
 	array_push($volum, 3);
 	array_push($titols,'Llengua castellana');
@@ -133,6 +133,75 @@ else{
 	array_push($volum, 3);
 
 
+	}
+	else{
+		
+		if (strcmp(substr($tipus,0,4),'3eso') == 0)
+		{ 
+			$prefijo=strtoupper($tipus);
+			array_push($titols, 'Biologia i Geologia');
+			array_push($identificador, $prefijo.'_BIO_1_');
+			array_push($isbn,'9788490583326');
+			array_push($volum, 1);
+			array_push($titols,'Història volum 1');
+			array_push($identificador, $prefijo.'_HIS_VAL_1_');
+			array_push($isbn,'9788468234519');
+			array_push($volum, 1);
+			array_push($titols,'Història volum 2');
+			array_push($identificador, $prefijo. '_HIS_VAL_2_');
+			array_push($isbn,'9788468234519');
+			array_push($volum, 2);
+			array_push($titols,'Història volum 3');
+			array_push($identificador, $prefijo. '_HIS_VAL_3_');
+			array_push($isbn,'9788468234519');
+			array_push($volum, 3);
+			array_push($titols,'Llengua castellana');
+			array_push($identificador, $prefijo.'_CAS_1_');
+			array_push($isbn,'9788468036571');
+			array_push($volum, 1);
+
+			// Distinguimos las matemáticas
+			if (strcmp($tipus,'3eso')== 0)
+			{
+				array_push($titols,'Matemàtiques');
+				array_push($identificador, '3ESO_MAT_1_');
+				array_push($isbn,'9788467578690');
+				array_push($volum, 1);
+			}
+			else
+			{
+
+				array_push($titols,'Matemàtiques volum 1');
+				array_push($identificador, '3ESOAP_MAT_1_');
+				array_push($isbn,'9788467852981');
+				array_push($volum, 1);
+				array_push($titols,'Matemàtiques volum 2');
+				array_push($identificador, '3ESOAP_MAT_2_');
+				array_push($isbn,'9788467852981');
+				array_push($volum, 2);
+				array_push($titols,'Matemàtiques volum 3');
+				array_push($identificador, '3ESOAP_MAT_3_');
+				array_push($isbn,'9788467852981');
+				array_push($volum, 3);
+			}
+			
+			array_push($titols,'Anglés');
+			array_push($identificador, $prefijo. '_ANG_1_');
+			array_push($isbn,'9789963516414');
+			array_push($volum, 1);
+			array_push($titols,'Valencià volum 1');
+			array_push($identificador, $prefijo. '_VAL_1_');
+			array_push($isbn,'9788430789900');
+			array_push($volum, 1);
+			array_push($titols,'Valencià volum 2');
+			array_push($identificador, $prefijo. '_VAL_2_');
+			array_push($isbn,'9788430789900');
+			array_push($volum, 2);
+			array_push($titols,'Valencià volum 3');
+			array_push($identificador, $prefijo.'_VAL_3_');
+			array_push($isbn,'9788430789900');
+			array_push($volum, 3);
+		}
 	}
 }
 

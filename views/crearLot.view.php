@@ -31,7 +31,7 @@
         echo "<input type=\"hidden\" name=identificador[] value=\"". $id. "\">";
         echo $id;
         echo "<input type=\"hidden\" name=isbn[] value=\"". $isbn[$i]. "\">";
-        echo "<input type=\"hidden\" name=volumen[] value=\"". $volumen[$i]. "\">";
+        echo "<input type=\"hidden\" name=volumen[] value=\"". $volum[$i]. "\">";
 
         echo "</td>";
         echo "<td>";

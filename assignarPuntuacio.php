@@ -31,7 +31,7 @@
 		$sentencia = $sentencia.$estat.",\"". $fecha . "\",\"" . $_POST['isbn'][$i]."\",\"". $_POST['volumen'][$i]. "\",\"". strtoupper($_POST['lot']). "\")";
 		executaSentencia($conexion, $sentencia);
 		$i++;
-		echo $sentencia;
+		//echo $sentencia;
 	}
 
 

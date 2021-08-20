@@ -172,6 +172,36 @@
 
 
     }
+    else {
+
+      echo "<h2 class=\"texto\"> Alumnat de 3r de Reforç </h2>";
+      $aplicats = $mostrarAssignacions[0];
+       echo "<center><table border=\"1\" bgcolor=\"white\" align=\"center\"> <tr><th> NIA </th><th> Nombre </th> <th> Lote </th><th>Puntos</th><th> Aula on està el lot </th></tr>";
+      foreach ($aplicats as $alumnat){
+        echo "<tr>";
+        echo "<td>";
+        echo $alumnat['nia'];
+        echo "</td>";
+         echo "<td>";
+        echo utf8_encode($alumnat['nombre']). " ".utf8_encode($alumnat['apellido1']). " ".utf8_encode($alumnat['apellido2']) ;
+        echo "</td>";
+         echo "<td>";
+        echo $alumnat['id_lote'];
+        echo "</td>";
+         echo "<td>";
+        echo $alumnat['puntos'];
+        echo "</td>";
+         echo "<td>";
+        echo "0.08"; // Rectificar curs 22-23 per l'aula $alumnat['id_aula']
+        echo "</td>";
+        echo "</tr>";
+
+      }
+      echo "</table></center>";
+      echo "<h2 class=\"texto\"> Alumnat de 3r Acadèmic </h2>";
+
+
+    }
 
 
   ?>

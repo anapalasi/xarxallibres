@@ -134,6 +134,43 @@
 				
 		}
 	}
+	else {
+		if (strcmp($_POST['tutoria'],"3ESO") ==0){
+
+			// Alumnat de reforç
+			$sentencia = "SELECT A.nia, A.nombre, A.apellido1, A.apellido2, H.puntos, T.id_aula, A.repetidor, A.opcion FROM Historico H, Alumno A, Tutoria T where H.nia = A.nia and A.opcion=\"AP\" and A.id_tutoria like '21_3ESO%' and banc_llibres=1 and T.id_tutoria=A.id_tutoria and H.curso=\"2020\" and A.repetidor=0 order by H.puntos desc";
+			$alumnosAplicados=executaSentenciaTotsResultats($conexion,$sentencia);
+
+			
+			$sentencia="SELECT distinct L.id_lote, sum(E.puntos) as puntos from Ejemplar E, Lote L where L.id_lote=E.id_lote and L.id_lote like '3ESOAP%'  group by L.id_lote order by puntos desc";
+			$llibresAplicats=executaSentenciaTotsResultats($conexion,$sentencia);
+
+			if (count($alumnosAplicados)> count($llibresAplicats))
+			{
+			for ($i=count($llibresAplicats);$i<count($alumnosAplicados);$i++){
+				array_push($alumnesSenseAssignar, $alumnosAplicados[$i]);
+			
+				
+			}
+		}
+		elseif (count($alumnosAplicados)<count($llibresAplicats)) {
+			for ($i=count($alumnosAplicados);$i<count($llibresAplicats);$i++)
+				array_push($llibresSenseAssignar, $llibresAplicats[$i]);
+		}
+		else{
+			echo "Hay el mismo número de lotes que de alumnos";
+		}
+
+		}
+		$assignacio=assignaLotsAlumnes($alumnosAplicados, $llibresAplicats);
+		array_push($mostrarAssignacions, $assignacio);
+
+
+		// Alumnat acadèmic
+		$sentencia = "SELECT A.nia, A.nombre, A.apellido1, A.apellido2, H.puntos, T.id_aula, A.repetidor, A.opcion FROM Historico H, Alumno A, Tutoria T where H.nia = A.nia and A.opcion is null and A.id_tutoria like '21_3ESO%' and banc_llibres=1 and T.id_tutoria=A.id_tutoria and H.curso=\"2020\" and A.repetidor=0 order by H.puntos desc";
+		$alumnosAcademicos=executaSentenciaTotsResultats($conexion,$sentencia);
+		echo count($alumnosAcademicos);
+	}
 
 	require 'views/simulacio.view.php';
 

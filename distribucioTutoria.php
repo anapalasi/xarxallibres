@@ -16,12 +16,17 @@
 
 	$sentencia="select A.nombre, A.apellido1, A.apellido2, A.id_lote, T.id_aula, L.retirat from Alumno A, Historico H, Tutoria T, Lote L where A.id_tutoria=\"". $_POST['tutoria']."\" and A.id_lote = H.id_lote and H.curso=\"2020\" and H.id_tutoria=T.id_tutoria and L.id_lote=A.id_lote order by A.apellido1, A.apellido2, A.nombre";
 	$alumnos = executaSentenciaTotsResultats($conexion, $sentencia);
+
+    if(count($alumnos) == 0){
+        $sentencia="select A.nombre, A.apellido1, A.apellido2, A.id_lote, \"Nou\" as id_aula, L.retirat from Alumno A, Lote L where A.id_tutoria=\"". $_POST['tutoria']."\" and A.id_lote = L.id_lote order by A.apellido1, A.apellido2, A.nombre";
+        $alumnos = executaSentenciaTotsResultats($conexion, $sentencia);
+    }
 	
     $pdf = new PDF();
     $pdf->AliasNbPages();
     $pdf->AddPage();
     $pdf->SetFont('Arial','B',16);
-    $pdf->Cell(0,10,$tutoria['descripcion'],0,0,"C");
+    $pdf->Cell(0,10,$tutoria['descripcion'],0,0,"C"); //descripcion
     $pdf->Ln();
     $pdf-> SetFont('Arial','B',12);
     $pdf->Cell(0,10,"Aula: " . $tutoria['id_aula'],0,0,"C");

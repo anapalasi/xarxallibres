@@ -149,6 +149,7 @@
       echo "<h2 class=\"texto\"> Alumnat de 3r Acadèmic </h2>";
       $academics = $mostrarAssignacions[1];
 
+      echo count($academics);
       echo "<center><table border=\"1\" bgcolor=\"white\" align=\"center\"> <tr><th> NIA </th><th> Nombre </th> <th> Lote </th><th>Puntos</th><th> Aula on està el lot </th></tr>";
       foreach ($academics as $alumnat){
         echo "<tr>";

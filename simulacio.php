@@ -165,13 +165,29 @@
 		$assignacio=assignaLotsAlumnes($alumnosAplicados, $llibresAplicats);
 		array_push($mostrarAssignacions, $assignacio);
 
-
+		// Si hem dit que l'assigne ho fa
+		if (strcmp($_POST['assignacio'],"on")==0){
+			foreach ($assignacio as $lot){
+				$sentencia="update Alumno set id_lote=\"". $lot['id_lote']. "\" where nia=\"". $lot['nia']."\"";
+				executaSentencia($conexion,$sentencia);
+			}
+			foreach ($alumnesSenseAssignar as $alumne){
+				$sentencia = "update Alumno set id_lote=NULL where nia=\"". $alumne['nia']."\"";
+				executaSentencia($conexion, $sentencia);
+			}
+				
+		}
 		// Alumnat acadèmic
 		$sentencia = "SELECT A.nia, A.nombre, A.apellido1, A.apellido2, H.puntos, T.id_aula, A.repetidor, A.opcion FROM Historico H, Alumno A, Tutoria T where H.nia = A.nia and A.opcion is null and A.id_tutoria like '21_3ESO%' and banc_llibres=1 and T.id_tutoria=A.id_tutoria and H.curso=\"2020\" and A.repetidor=0 order by H.puntos desc";
 		$alumnosAcademicos=executaSentenciaTotsResultats($conexion,$sentencia);
+
+
 		
 		$sentencia="select H.id_lote, L.repartit, L.retirat, T.id_aula, H.puntos from Historico H, Lote L, Tutoria T, Alumno A where L.id_lote=H.id_lote and H.id_lote like '3ESO_%' and H.id_lote not like '3ESOAP%' and L.repartit=0 and H.curso=\"2020\" and T.id_tutoria = H.id_tutoria and A.nia= H.nia and A.repetidor=0 order by H.puntos desc, T.id_aula asc ";
+
+
 		$llibresAcademics=executaSentenciaTotsResultats($conexion,$sentencia);
+		echo "Llibres academics: ". count($llibresAcademics);
 		
 		if (count($alumnosAcademicos)> count($llibresAcademics))
 		{
@@ -190,8 +206,22 @@
 		$assignacio=assignaLotsAlumnes($alumnosAcademicos, $llibresAcademics);
 		array_push($mostrarAssignacions, $assignacio);
 
+// Si hem dit que l'assigne ho fa
+		if (strcmp($_POST['assignacio'],"on")==0){
+			foreach ($assignacio as $lot){
+				$sentencia="update Alumno set id_lote=\"". $lot['id_lote']. "\" where nia=\"". $lot['nia']."\"";
+				executaSentencia($conexion,$sentencia);
+			}
+			foreach ($alumnesSenseAssignar as $alumne){
+				$sentencia = "update Alumno set id_lote=NULL where nia=\"". $alumne['nia']."\"";
+				executaSentencia($conexion, $sentencia);
+			}
+				
 	}
 
+}
+
+	
 	require 'views/simulacio.view.php';
 
 

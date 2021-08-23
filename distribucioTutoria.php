@@ -43,14 +43,26 @@
 	}
 	$pdf->Ln();
     $pdf->SetFont('Arial','',10);
+    $negreta=0;
+
     foreach ($alumnos as $alumno){
     
     	$altura=10;
-
     	// Mostramos el nombre
     	$nombre = utf8_decode($alumno['nombre']). " ". utf8_decode($alumno["apellido1"]). " ". utf8_decode($alumno["apellido2"]);
     	$pdf->Cell($anchura[0],$altura,$nombre,1,0);
+
+        $sentencia = "select count(*) as numero from Ejemplar where id_lote=\"". $alumno['id_lote']. "\" and id_ejemplar like '%_HIS_CAS_%' ";
+        $num=executaSentencia($conexion, $sentencia);
+
+        if ($num['numero'] !=0){
+            $pdf->SetFont('Arial','B',10);
+            $negreta=1;
+
+        }
     	$pdf->Cell($anchura[1],$altura, $alumno['id_lote'],1,0,'C');
+
+        $pdf->SetFont('Arial','',10);
 
         $sentencia="select L.retirat, T.id_aula from Lote L, Historico H, Tutoria T where L.id_lote=\"". $alumno['id_lote']. "\" and L.id_lote = H.id_lote and H.id_tutoria = T.id_tutoria";
         $lote=executaSentencia($conexion,$sentencia);
@@ -100,6 +112,13 @@
 
 
     }
+    if ($negreta ==1){
+        $pdf->Ln();
+        $pdf->SetFont('Arial','B',10);
+        $pdf->Cell(0,10,utf8_decode("Els lots en negreta contenen els llibres d'Història en Castellà")); 
+    }
+   
+
     $pdf->Output();
 
   

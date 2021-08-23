@@ -14,13 +14,14 @@
 	$sentencia= "select id_tutoria, descripcion, id_aula from Tutoria where id_tutoria=\"". $_POST['tutoria']. "\"";
 	$tutoria=executaSentencia($conexion,$sentencia);
 
-	$sentencia="select A.nombre, A.apellido1, A.apellido2, A.id_lote, T.id_aula, L.retirat from Alumno A, Historico H, Tutoria T, Lote L where A.id_tutoria=\"". $_POST['tutoria']."\" and A.id_lote = H.id_lote and H.curso=\"2020\" and H.id_tutoria=T.id_tutoria and L.id_lote=A.id_lote order by A.apellido1, A.apellido2, A.nombre";
+    $sentencia="select A.nombre, A.apellido1, A.apellido2, A.id_lote, A.id_lote from Alumno A where A.id_tutoria=\"". $_POST['tutoria']."\" and A.banc_llibres=\"1\" ";
+	/*$sentencia="select A.nombre, A.apellido1, A.apellido2, A.id_lote, T.id_aula, L.retirat from Alumno A, Historico H, Tutoria T, Lote L where A.id_tutoria=\"". $_POST['tutoria']."\" and A.id_lote = H.id_lote and H.curso=\"2020\" and H.id_tutoria=T.id_tutoria and L.id_lote=A.id_lote order by A.apellido1, A.apellido2, A.nombre";*/
 	$alumnos = executaSentenciaTotsResultats($conexion, $sentencia);
 
-    if(count($alumnos) == 0){
+   /* if(count($alumnos) == 0){
         $sentencia="select A.nombre, A.apellido1, A.apellido2, A.id_lote, \"Nou\" as id_aula, L.retirat from Alumno A, Lote L where A.id_tutoria=\"". $_POST['tutoria']."\" and A.id_lote = L.id_lote order by A.apellido1, A.apellido2, A.nombre";
         $alumnos = executaSentenciaTotsResultats($conexion, $sentencia);
-    }
+    }*/
 	
     $pdf = new PDF();
     $pdf->AliasNbPages();
@@ -51,10 +52,19 @@
     	$pdf->Cell($anchura[0],$altura,$nombre,1,0);
     	$pdf->Cell($anchura[1],$altura, $alumno['id_lote'],1,0,'C');
 
-    	if ($alumno['retirat'])
-    		$ubicacio="Magatzem";
-    	else
-    		$ubicacio=$alumno['id_aula'];
+        $sentencia="select L.retirat, T.id_aula from Lote L, Historico H, Tutoria T where L.id_lote=\"". $alumno['id_lote']. "\" and L.id_lote = H.id_lote and H.id_tutoria = T.id_tutoria";
+        $lote=executaSentencia($conexion,$sentencia);
+
+        if (count($lote) == 1 and strcmp($alumno['id_lote'],"")){
+            $ubicacio="Nou";
+        }
+        else{
+            if ($lote['retirat'])
+                 $ubicacio="Magatzem";
+            else
+              $ubicacio=$lote['id_aula'];
+        }
+    	
     	$pdf->Cell($anchura[2],$altura,$ubicacio,1,0,'C');
     	$pdf->Ln();
 

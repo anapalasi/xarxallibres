@@ -226,7 +226,21 @@
 		$sentencia="select H.id_lote, L.repartit, L.retirat, T.id_aula, H.puntos from Historico H, Lote L, Tutoria T, Alumno A where L.id_lote=H.id_lote and H.id_lote like '". $_POST['tutoria']. "_%' and L.repartit=0 and H.curso=\"2020\" and T.id_tutoria = H.id_tutoria and A.nia= H.nia and A.repetidor=0 order by H.puntos desc, T.id_aula asc ";
 		$llibres=executaSentenciaTotsResultats($conexion,$sentencia);
 		$assignacio=assignaLotsAlumnes($alumnos, $llibres);
+		array_push($mostrarAssignacions, $assignacio);
 		
+		
+		// Si hem dit que l'assigne ho fa
+		if (strcmp($_POST['assignacio'],"on")==0){
+			foreach ($assignacio as $lot){
+				$sentencia="update Alumno set id_lote=\"". $lot['id_lote']. "\" where nia=\"". $lot['nia']."\"";
+				executaSentencia($conexion,$sentencia);
+			}
+			foreach ($alumnesSenseAssignar as $alumne){
+				$sentencia = "update Alumno set id_lote=NULL where nia=\"". $alumne['nia']."\"";
+				executaSentencia($conexion, $sentencia);
+			}
+					
+		}
 		if (count($alumnos)> count($llibres))
 		{
 			for ($i=count($llibres);$i<count($alumnos);$i++){

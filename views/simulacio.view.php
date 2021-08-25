@@ -120,63 +120,88 @@
 
     }
     else {
-      if (count($mostrarAssignacions) == 2){
-        echo "3r";
+      if (count($mostrarAssignacions) == 2){ // 3r
+        echo "<h2 class=\"texto\"> Alumnat de 3r de Reforç </h2>";
+        $aplicats = $mostrarAssignacions[0];
+        echo "<center><table border=\"1\" bgcolor=\"white\" align=\"center\"> <tr><th> NIA </th><th> Nombre </th> <th> Lote </th><th>Puntos</th><th> Aula on està el lot </th></tr>";
+        foreach ($aplicats as $alumnat){
+          echo "<tr>";
+          echo "<td>";
+          echo $alumnat['nia'];
+          echo "</td>";
+           echo "<td>";
+          echo utf8_encode($alumnat['nombre']). " ".utf8_encode($alumnat['apellido1']). " ".utf8_encode($alumnat['apellido2']) ;
+          echo "</td>";
+           echo "<td>";
+          echo $alumnat['id_lote'];
+          echo "</td>";
+          echo "<td>";
+          echo $alumnat['puntos'];
+          echo "</td>";
+          echo "<td>";
+          echo "1.08"; // Rectificar curs 22-23 per l'aula $alumnat['id_aula']
+          echo "</td>";
+          echo "</tr>";
+        }
+    
+        echo "</table></center>";    
+        echo "<h2 class=\"texto\"> Alumnat de 3r Acadèmic </h2>";
+        $academics = $mostrarAssignacions[1];
+
+     
+        echo "<center><table border=\"1\" bgcolor=\"white\" align=\"center\"> <tr><th> NIA </th><th> Nombre </th> <th> Lote </th><th>Puntos</th><th> Aula on està el lot </th></tr>";
+        foreach ($academics as $alumnat){
+            echo "<tr>";
+            echo "<td>";
+            echo $alumnat['nia'];
+            echo "</td>";
+             echo "<td>";
+            echo utf8_encode($alumnat['nombre']). " ".utf8_encode($alumnat['apellido1']). " ".utf8_encode($alumnat['apellido2']) ;
+            echo "</td>";
+             echo "<td>";
+            echo $alumnat['id_lote'];
+            echo "</td>";
+             echo "<td>";
+            echo $alumnat['puntos'];
+            echo "</td>";
+             echo "<td>";
+            echo  $alumnat['id_aula'];
+            echo "</td>";
+            echo "</tr>";
+
+        }
+        echo "</table></center>"; 
+        
       }
       else {
-        echo "1r o 2n";
-      }
-      echo "<h2 class=\"texto\"> Alumnat de 3r de Reforç </h2>";
-      $aplicats = $mostrarAssignacions[0];
-       echo "<center><table border=\"1\" bgcolor=\"white\" align=\"center\"> <tr><th> NIA </th><th> Nombre </th> <th> Lote </th><th>Puntos</th><th> Aula on està el lot </th></tr>";
-      foreach ($aplicats as $alumnat){
-        echo "<tr>";
-        echo "<td>";
-        echo $alumnat['nia'];
-        echo "</td>";
-         echo "<td>";
-        echo utf8_encode($alumnat['nombre']). " ".utf8_encode($alumnat['apellido1']). " ".utf8_encode($alumnat['apellido2']) ;
-        echo "</td>";
-         echo "<td>";
-        echo $alumnat['id_lote'];
-        echo "</td>";
-         echo "<td>";
-        echo $alumnat['puntos'];
-        echo "</td>";
-         echo "<td>";
-        echo "1.08"; // Rectificar curs 22-23 per l'aula $alumnat['id_aula']
-        echo "</td>";
-        echo "</tr>";
+        echo "<h2 class=\"texto\"> Alumnat </h2>";
+        $academics = $mostrarAssignacions[0];
 
-      }
-      echo "</table></center>";
-      
-      echo "<h2 class=\"texto\"> Alumnat de 3r Acadèmic </h2>";
-      $academics = $mostrarAssignacions[1];
 
-      echo count($academics);
-      echo "<center><table border=\"1\" bgcolor=\"white\" align=\"center\"> <tr><th> NIA </th><th> Nombre </th> <th> Lote </th><th>Puntos</th><th> Aula on està el lot </th></tr>";
-      foreach ($academics as $alumnat){
-        echo "<tr>";
-        echo "<td>";
-        echo $alumnat['nia'];
-        echo "</td>";
-         echo "<td>";
-        echo utf8_encode($alumnat['nombre']). " ".utf8_encode($alumnat['apellido1']). " ".utf8_encode($alumnat['apellido2']) ;
-        echo "</td>";
-         echo "<td>";
-        echo $alumnat['id_lote'];
-        echo "</td>";
-         echo "<td>";
-        echo $alumnat['puntos'];
-        echo "</td>";
-         echo "<td>";
-        echo  $alumnat['id_aula'];
-        echo "</td>";
-        echo "</tr>";
+        echo "<center><table border=\"1\" bgcolor=\"white\" align=\"center\"> <tr><th> NIA </th><th> Nombre </th> <th> Lote </th><th>Puntos</th><th> Aula on està el lot </th></tr>";
+        foreach ($academics as $alumnat){
+            echo "<tr>";
+            echo "<td>";
+            echo $alumnat['nia'];
+            echo "</td>";
+             echo "<td>";
+            echo utf8_encode($alumnat['nombre']). " ".utf8_encode($alumnat['apellido1']). " ".utf8_encode($alumnat['apellido2']) ;
+            echo "</td>";
+             echo "<td>";
+            echo $alumnat['id_lote'];
+            echo "</td>";
+             echo "<td>";
+            echo $alumnat['puntos'];
+            echo "</td>";
+             echo "<td>";
+            echo  $alumnat['id_aula'];
+            echo "</td>";
+            echo "</tr>";
 
-      }
-      echo "</table></center>";
+        }
+        echo "</table></center>";       }
+         
+    
     }
 
     if (count($alumnesSenseAssignar) !=0 ){
@@ -242,7 +267,7 @@
 
      echo "<h2 class=\"texto\"> Lots sense tornar </h2>";
 
-     $sentencia="SELECT A.nombre, A.apellido1, A.apellido2, L.id_lote, A.repetidor FROM Lote L, Historico H, Alumno A where L.repartit=1 and L.id_lote like '3%' and H.id_lote = L.id_lote and H.curso=\"2020\" and H.nia=A.nia and A.repetidor=\"0\"";
+     $sentencia="SELECT A.nombre, A.apellido1, A.apellido2, L.id_lote, A.repetidor FROM Lote L, Historico H, Alumno A where L.repartit=1 and L.id_lote like '" . $_POST['tutoria']."%' and H.id_lote = L.id_lote and H.curso=\"2020\" and H.nia=A.nia and A.repetidor=\"0\"";
      $resultat=executaSentenciaTotsResultats($conexion, $sentencia);
 
     echo "<center><table border=\"1\" bgcolor=\"white\" align=\"center\"> <tr><th> Lot </th><th> Alumne </th></tr>";

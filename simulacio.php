@@ -219,7 +219,28 @@
 				
 	}
 	else{
-		echo "2º o 1º de ESO";
+
+		$sentencia = "SELECT A.nia, A.nombre, A.apellido1, A.apellido2, H.puntos, T.id_aula, A.repetidor, A.opcion FROM Historico H, Alumno A, Tutoria T where H.nia = A.nia and A.opcion is null and A.id_tutoria like '21_". $_POST['tutoria']. "%' and banc_llibres=1 and T.id_tutoria=A.id_tutoria and H.curso=\"2020\" and A.repetidor=0 order by H.puntos desc";
+		$alumnos=executaSentenciaTotsResultats($conexion,$sentencia);
+		$sentencia="select H.id_lote, L.repartit, L.retirat, T.id_aula, H.puntos from Historico H, Lote L, Tutoria T, Alumno A where L.id_lote=H.id_lote and H.id_lote like '". $_POST['tutoria']. "_%' and L.repartit=0 and H.curso=\"2020\" and T.id_tutoria = H.id_tutoria and A.nia= H.nia and A.repetidor=0 order by H.puntos desc, T.id_aula asc ";
+		$llibres=executaSentenciaTotsResultats($conexion,$sentencia);
+		$assignacio=assignaLotsAlumnes($alumnos, $llibres);
+		
+		if (count($alumnos)> count($llibres))
+		{
+			for ($i=count($llibres);$i<count($alumnos);$i++){
+				array_push($alumnesSenseAssignar, $alumnos[$i]);
+					
+			}
+		}
+		elseif (count($alumnos)<count($llibres)) {
+			for ($i=count($alumnos);$i<count($llibres);$i++)
+					array_push($llibresSenseAssignar, $llibres[$i]);
+			}
+		else{
+				echo "Hay el mismo número de lotes que de alumnos";
+		}
+
 	}
 
 }
@@ -240,3 +261,4 @@
 
 
  
+

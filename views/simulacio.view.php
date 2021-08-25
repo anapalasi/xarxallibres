@@ -120,7 +120,12 @@
 
     }
     else {
-
+      if (count($mostrarAssignacions) == 2){
+        echo "3r";
+      }
+      else {
+        echo "1r o 2n";
+      }
       echo "<h2 class=\"texto\"> Alumnat de 3r de Reforç </h2>";
       $aplicats = $mostrarAssignacions[0];
        echo "<center><table border=\"1\" bgcolor=\"white\" align=\"center\"> <tr><th> NIA </th><th> Nombre </th> <th> Lote </th><th>Puntos</th><th> Aula on està el lot </th></tr>";

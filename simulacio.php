@@ -43,7 +43,33 @@
 		$sentencia="SELECT distinct H.id_lote, H.puntos,T.id_aula, L.retirat, L.repartit from Historico H, Tutoria T, Lote L, Alumno A where T.id_tutoria=H.id_tutoria and L.id_lote=H.id_lote and H.id_lote like '4ESOAC%' and H.curso=\"2020\" and A.id_lote=L.id_lote and A.repetidor=0  and L.repartit=0 order by H.puntos desc, T.id_aula asc ";
 		$llibresCiencies=executaSentenciaTotsResultats($conexion,$sentencia);
 
-		
+		$sentencia="select L.id_lote, sum(E.puntos) as puntos, \"Nou\", L.retirat, L.repartit from Lote L, Ejemplar E where not exists (select * from Historico H where H.id_lote=L.id_lote) and L.id_lote like '4ESOAC%' and E.id_lote=L.id_lote group by L.id_lote order by puntos desc";
+		$lots_nous=executaSentenciaTotsResultats($conexion,$sentencia);
+
+		if (count($lots_nous) !=0){
+			$indiceLlibres=0;
+			$indiceNous=0;
+
+			$llibresOrdenats=array();
+
+			while ($indiceLlibres < count($llibresCiencies) or $indiceNous < count($indiceNous))
+			{
+				if ($llibresCiencies[$indiceLlibres]['puntos'] >= $lots_nous[$indiceNous]['puntos']){
+					array_push($llibresOrdenats, $llibresCiencies[$indiceLlibres]);
+					$indiceLlibres++;
+				}
+				else {
+
+					array_push($llibresOrdenats, $lots_nous[$indiceNous]);
+					$indiceNous++;
+				
+				}
+			}
+			$llibresCiencies=$llibresOrdenats;
+		}
+
+
+		$sentencia="select L.id_lote from Lote L where not exists (select * from Historico H where H.id_lote=L.id_lote) and L.id_lote like '4ESOAC%'";
 		if (count($alumnosCiencias)> count($llibresCiencies))
 		{
 			for ($i=count($llibresCiencies);$i<count($alumnosCiencias);$i++){
@@ -88,7 +114,33 @@
 		$sentencia="SELECT distinct H.id_lote, H.puntos,T.id_aula, L.retirat, L.repartit from Historico H, Tutoria T, Lote L, Alumno A where T.id_tutoria=H.id_tutoria and L.id_lote=H.id_lote and H.id_lote like '4ESOAL%' and H.curso=\"2020\" and A.id_lote=L.id_lote and A.repetidor=0  and L.repartit=0 order by H.puntos desc";
 		$llibresLletres=executaSentenciaTotsResultats($conexion,$sentencia);
 
+
+		$sentencia="select L.id_lote, sum(E.puntos) as puntos, \"Nou\", L.retirat, L.repartit from Lote L, Ejemplar E where not exists (select * from Historico H where H.id_lote=L.id_lote) and L.id_lote like '4ESOAL%' and E.id_lote=L.id_lote group by L.id_lote order by puntos desc";
+		$lots_nous=executaSentenciaTotsResultats($conexion,$sentencia);
+
 		
+		if (count($lots_nous) !=0){
+			$indiceLlibres=0;
+			$indiceNous=0;
+
+			$llibresOrdenats=array();
+
+			while ($indiceLlibres < count($llibresLletres) or $indiceNous < count($indiceNous))
+			{
+				if ($llibresLletres[$indiceLlibres]['puntos'] >= $lots_nous[$indiceNous]['puntos']){
+					array_push($llibresOrdenats, $llibresLletres[$indiceLlibres]);
+					$indiceLlibres++;
+				}
+				else {
+
+					array_push($llibresOrdenats, $lots_nous[$indiceNous]);
+					$indiceNous++;
+				
+				}
+			}
+			$llibresLletres=$llibresOrdenats;
+		}
+
 		if (count($alumnosLetras)> count($llibresLletres))
 		{
 			for ($i=count($llibresLletres);$i<count($alumnosLetras);$i++){
@@ -131,6 +183,32 @@
 
 		$sentencia="SELECT distinct H.id_lote, H.puntos,T.id_aula, L.retirat, L.repartit from Historico H, Tutoria T, Lote L, Alumno A where T.id_tutoria=H.id_tutoria and L.id_lote=H.id_lote and H.id_lote like '4ESOAP%' and H.curso=\"2020\" and A.id_lote=L.id_lote and A.repetidor=0  and L.repartit=0 order by H.puntos desc, T.id_aula asc ";
 		$llibresAplicades=executaSentenciaTotsResultats($conexion,$sentencia);
+
+		$sentencia="select L.id_lote, sum(E.puntos) as puntos, \"Nou\", L.retirat, L.repartit from Lote L, Ejemplar E where not exists (select * from Historico H where H.id_lote=L.id_lote) and L.id_lote like '4ESOAP%' and E.id_lote=L.id_lote group by L.id_lote order by puntos desc";
+		$lots_nous=executaSentenciaTotsResultats($conexion,$sentencia);
+
+	//	echo count($llibresAplicades). " ";
+		if (count($lots_nous) !=0){
+			$indiceLlibres=0;
+			$indiceNous=0;
+
+			$llibresOrdenats=array();
+
+			while ($indiceLlibres < count($llibresAplicades) or $indiceNous < count($indiceNous))
+			{
+				if ($llibresAplicades[$indiceLlibres]['puntos'] >= $lots_nous[$indiceNous]['puntos']){
+					array_push($llibresOrdenats, $llibresAplicades[$indiceLlibres]);
+					$indiceLlibres++;
+				}
+				else {
+
+					array_push($llibresOrdenats, $lots_nous[$indiceNous]);
+					$indiceNous++;
+				
+				}
+			}
+			$llibresAplicades=$llibresOrdenats;
+		}
 
 		
 		if (count($alumnosAplicadas)> count($llibresAplicades))
@@ -183,6 +261,31 @@
 				
 			$sentencia="SELECT distinct L.id_lote, sum(E.puntos) as puntos from Ejemplar E, Lote L where L.id_lote=E.id_lote and L.id_lote like '3ESOAP%'  group by L.id_lote order by puntos desc";
 			$llibresAplicats=executaSentenciaTotsResultats($conexion,$sentencia);
+			$sentencia="select L.id_lote, sum(E.puntos) as puntos, \"Nou\", L.retirat, L.repartit from Lote L, Ejemplar E where not exists (select * from Historico H where H.id_lote=L.id_lote) and L.id_lote like '3ESOAP%' and E.id_lote=L.id_lote group by L.id_lote order by puntos desc";
+			$lots_nous=executaSentenciaTotsResultats($conexion,$sentencia);
+
+			if (count($lots_nous) !=0){
+				$indiceLlibres=0;
+				$indiceNous=0;
+
+				$llibresOrdenats=array();
+
+				while ($indiceLlibres < count($llibresAplicats) or $indiceNous < count($indiceNous))
+				{
+					if ($llibresAplicats[$indiceLlibres]['puntos'] >= $lots_nous[$indiceNous]['puntos']){
+						array_push($llibresOrdenats, $llibresAplicats[$indiceLlibres]);
+						$indiceLlibres++;
+					}
+					else {
+
+						array_push($llibresOrdenats, $lots_nous[$indiceNous]);
+						$indiceNous++;
+					
+					}
+				}
+				$llibresAplicats=$llibresOrdenats;
+			}
+
 
 			if (count($alumnosAplicados)> count($llibresAplicats))
 			{
@@ -233,7 +336,33 @@
 
 
 			$llibresAcademics=executaSentenciaTotsResultats($conexion,$sentencia);
-			echo "Llibres academics: ". count($llibresAcademics);
+			
+			$sentencia="select L.id_lote, sum(E.puntos) as puntos, \"Nou\", L.retirat, L.repartit from Lote L, Ejemplar E where not exists (select * from Historico H where H.id_lote=L.id_lote) and L.id_lote like '3ESO%' and L.id_lote not like '3ESOAP%' and E.id_lote=L.id_lote group by L.id_lote order by puntos desc";
+			$lots_nous=executaSentenciaTotsResultats($conexion,$sentencia);
+
+			if (count($lots_nous) !=0){
+				$indiceLlibres=0;
+				$indiceNous=0;
+
+				$llibresOrdenats=array();
+
+				while ($indiceLlibres < count($llibresAcademics) or $indiceNous < count($indiceNous))
+				{
+					if ($llibresAcademics[$indiceLlibres]['puntos'] >= $lots_nous[$indiceNous]['puntos']){
+						array_push($llibresOrdenats, $llibresAcademics[$indiceLlibres]);
+						$indiceLlibres++;
+					}
+					else {
+
+						array_push($llibresOrdenats, $lots_nous[$indiceNous]);
+						$indiceNous++;
+					
+					}
+				}
+				$llibresAcademics=$llibresOrdenats;
+			}
+
+
 			
 			if (count($alumnosAcademicos)> count($llibresAcademics))
 			{
@@ -282,6 +411,33 @@
 
 		$sentencia="select H.id_lote, L.repartit, L.retirat, T.id_aula, H.puntos from Historico H, Lote L, Tutoria T, Alumno A where L.id_lote=H.id_lote and H.id_lote like '". $_POST['tutoria']. "_%' and L.repartit=0 and H.curso=\"2020\" and T.id_tutoria = H.id_tutoria and A.nia= H.nia and A.repetidor=0 order by H.puntos desc, T.id_aula asc ";
 		$llibres=executaSentenciaTotsResultats($conexion,$sentencia);
+
+		$sentencia="select L.id_lote, sum(E.puntos) as puntos, \"Nou\", L.retirat, L.repartit from Lote L, Ejemplar E where not exists (select * from Historico H where H.id_lote=L.id_lote) and L.id_lote like '". $_POST['tutoria']. "_%' and E.id_lote=L.id_lote group by L.id_lote order by puntos desc";
+		$lots_nous=executaSentenciaTotsResultats($conexion,$sentencia);
+
+		if (count($lots_nous) !=0){
+				$indiceLlibres=0;
+				$indiceNous=0;
+
+				$llibresOrdenats=array();
+
+				while ($indiceLlibres < count($llibres) or $indiceNous < count($indiceNous))
+				{
+					if ($llibres[$indiceLlibres]['puntos'] >= $lots_nous[$indiceNous]['puntos']){
+						array_push($llibresOrdenats, $llibres[$indiceLlibres]);
+						$indiceLlibres++;
+					}
+					else {
+
+						array_push($llibresOrdenats, $lots_nous[$indiceNous]);
+						$indiceNous++;
+					
+					}
+				}
+				$llibres=$llibresOrdenats;
+			}
+
+
 		$assignacio=assignaLotsAlumnes($alumnos, $llibres);
 		array_push($mostrarAssignacions, $assignacio);
 		

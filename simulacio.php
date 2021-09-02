@@ -323,13 +323,12 @@
 			$alumnosAcademicos=executaSentenciaTotsResultats($conexion,$sentencia);
 
 
-			$sentencia="select A.nia, A.nombre, A.apellido1, A.apellido2,0,T.id_aula,A.repetidor,A.opcion from Alumno A, Tutoria T where not exists (select * from Historico H where A.nia = H.nia) and A.id_tutoria like '21_3ESO%' and A.opcion=\"AC\" and banc_llibres=1 and T.id_tutoria = A.id_tutoria";
+			$sentencia="select A.nia, A.nombre, A.apellido1, A.apellido2,0,T.id_aula,A.repetidor,A.opcion from Alumno A, Tutoria T where not exists (select * from Historico H where A.nia = H.nia) and A.id_tutoria like '21_3ESO%' and A.opcion=\"AC\"  and banc_llibres=1 and T.id_tutoria = A.id_tutoria";
 			$alumnesnous= executaSentenciaTotsResultats($conexion, $sentencia);
-
 
 			foreach ($alumnesnous as $alumne)
 			{
-				array_push($alumnosCiencias, $alumne);
+				array_push($alumnosAcademicos, $alumne);
 			}
 		
 			$sentencia="select H.id_lote, L.repartit, L.retirat, T.id_aula, H.puntos from Historico H, Lote L, Tutoria T, Alumno A where L.id_lote=H.id_lote and H.id_lote like '3ESO_%' and H.id_lote not like '3ESOAP%' and L.repartit=0 and H.curso=\"2020\" and T.id_tutoria = H.id_tutoria and A.nia= H.nia and A.repetidor=0 order by H.puntos desc, T.id_aula asc ";

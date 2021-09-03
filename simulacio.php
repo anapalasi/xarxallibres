@@ -399,7 +399,7 @@
 		$sentencia = "SELECT A.nia, A.nombre, A.apellido1, A.apellido2, H.puntos, T.id_aula, A.repetidor, A.opcion FROM Historico H, Alumno A, Tutoria T where H.nia = A.nia and A.opcion is null and A.id_tutoria like '21_". $_POST['tutoria']. "%' and banc_llibres=1 and T.id_tutoria=A.id_tutoria and H.curso=\"2020\" and A.repetidor=0 order by H.puntos desc";
 		$alumnos=executaSentenciaTotsResultats($conexion,$sentencia);
 
-		$sentencia="select A.nia, A.nombre, A.apellido1, A.apellido2,0,T.id_aula,A.repetidor,A.opcion from Alumno A, Tutoria T where not exists (select * from Historico H where A.nia = H.nia) and A.id_tutoria like '21_'" . $_POST['tutoria'] ."%' and A.opcion=\"AC\" and banc_llibres=1 and T.id_tutoria = A.id_tutoria";
+		$sentencia="select A.nia, A.nombre, A.apellido1, A.apellido2,0,T.id_aula,A.repetidor,A.opcion from Alumno A, Tutoria T where not exists (select * from Historico H where A.nia = H.nia) and A.id_tutoria like '21_" . $_POST['tutoria'] ."%'  and banc_llibres=1 and T.id_tutoria = A.id_tutoria";
 		$alumnesnous= executaSentenciaTotsResultats($conexion, $sentencia);
 
 

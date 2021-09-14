@@ -167,6 +167,13 @@ function conexion($bd_config){
 		return $noxarxa;
 	}
 
+	function alumnesXarxaTutoria($conexion, $grupo){
+		$sentencia = "select nombre as nom, apellido1 as ape1, apellido2 as ape2, nia, repetidor,A.id_lote, L.valoracioglobal from Alumno A, Lote L where banc_llibres=\"1\" and id_tutoria=\"". $grupo."\" and A.id_lote=L.id_lote order by ape1, ape2, nom";
+
+		$noxarxa=executaSentenciaTotsResultats($conexion, $sentencia);
+		return $noxarxa;
+	}
+
 	/* Funcion que devuelve el nombre de los alumnos que aun tienen libros para valorar en una tutoria */
 	function alumnosLibrosNoValorados($conexion, $tutoria){
 		$sentencia="SELECT distinct nombre, apellido1, apellido2 from Alumno A, Ejemplar E where A.id_lote=E.id_lote and E.puntos=-1 and id_tutoria=\"". $tutoria . "\"";
@@ -224,6 +231,13 @@ function conexion($bd_config){
 	/* Funcio per obtenir totes les tutories que tenen llibres */
 	function tutoriasConLibros($conexion){
 		$sentencia = "select id_tutoria, descripcion from Tutoria where id_tutoria like '20%ESO%'"; //or id_tutoria like '20%CFB%'";
+		$resultat = executaSentenciaTotsResultats($conexion, $sentencia);
+		return $resultat;
+	}
+
+	/* Funcio per obtenir totes les tutories que tenen llibres */
+	function tutoriasConLibrosCurso($conexion,$curso){
+		$sentencia = "select id_tutoria, descripcion from Tutoria where id_tutoria like '". $curso. "_%ESO%'"; //or id_tutoria like '20%CFB%'";
 		$resultat = executaSentenciaTotsResultats($conexion, $sentencia);
 		return $resultat;
 	}
@@ -470,10 +484,11 @@ function conexion($bd_config){
 
 	}
 
-        /* Funcio per obtenir les dades per distribuir els lots entre classes */
-        /*function distribucioNousAlumnes($conexion){
-                $sentencia = "select concat(A.nombre," ", A.apellido1, " ", A.apellido2), A.id_lote, A.repetidor, L.repartit, L.folres, L.valoracioglobal from Historico H, Alumno A, Lote L where A.nia=H.nia and H.curso=\"2020\" and L.id_lote=H.id_lote and banc_llibres=\"1\""; 
-                $resultat = executaSentenciaTotsResultats($conexion, $sentencia);
-                return $resultat;
-	}*/
+
+    /* Funcio per obtenir les dades per distribuir els lots entre classes */
+    function distribucioNousAlumnes($conexion, $tutoria){
+        $sentencia = "select concat(A.nombre,\" \", A.apellido1, \" \", A.apellido2), A.id_lote, A.repetidor, L.repartit, L.folres, L.valoracioglobal from Historico H, Alumno A, Lote L where A.nia=H.nia and H.curso=\"2020\" and L.id_lote=H.id_lote and banc_llibres=\"1\" and A.id_tutoria=\"" . $tutoria. "\" order by A.apellido1, A.apellido2,A.nombre" ; 
+        $resultat = executaSentenciaTotsResultats($conexion, $sentencia);
+        return $resultat;
+	}
 

@@ -469,3 +469,11 @@ function conexion($bd_config){
 		
 
 	}
+
+        /* Funcio per obtenir les dades per distribuir els lots entre classes */
+        /*function distribucioNousAlumnes($conexion){
+                $sentencia = "select concat(A.nombre," ", A.apellido1, " ", A.apellido2), A.id_lote, A.repetidor, L.repartit, L.folres, L.valoracioglobal from Historico H, Alumno A, Lote L where A.nia=H.nia and H.curso=\"2020\" and L.id_lote=H.id_lote and banc_llibres=\"1\""; 
+                $resultat = executaSentenciaTotsResultats($conexion, $sentencia);
+                return $resultat;
+	}*/
+

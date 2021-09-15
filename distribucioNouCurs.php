@@ -42,9 +42,10 @@
 		$filas = alumnesXarxaTutoria($conexion,$grupo["id_tutoria"]);
 
 		foreach ($filas as $valor){
+			$pdf->SetFont('Arial','',10);
 	  	// Obtenemos los valores separándolos por comas
 			$nombre= $valor['nom']. " ". $valor["ape1"]. " ". $valor["ape2"];
-  			$pdf->Cell($anchura[0],10,utf8_decode($nombre),1,0,"C");
+  			$pdf->Cell($anchura[0],10,$nombre,1,0,"C");
 
   			$pdf->Cell($anchura[1],10,utf8_decode($valor['id_lote']),1,0,"C");
 
@@ -58,23 +59,29 @@
   				if (strcmp($lotAnterior['repartit'],"1") == 0)
   					$pdf->Cell($anchura[2],10,"S",1,0,"C");
   				else
-  					$pdf->Cell($anchura[2],10,"",1,0,"C");
+					$pdf->Cell($anchura[2],10,"",1,0,"C");
+				$pdf->Cell($anchura[3],10,"",1,0,"C");
 
   			}
-  			else
+			else
+			{
   				$pdf->Cell($anchura[2],10,"",1,0,"C");
+				// Comprovarem si el lot de l'any passat l'ha de retornar l'alumne
+				if (strcmp($lotAnterior['repartit'],"1") == 0)
+					$pdf->Cell($anchura[3],10,"S",1,0,"C");
+				else
+					$pdf->Cell($anchura[3],10,"",1,0,"C");
+			}
+			
+			// Comprovarem si fan falta els folres
+			if ((strcmp($lotAnterior['folres'],"0")==0) and (strcmp($valor['repetidor'],"0") ==0))
+				$pdf->Cell($anchura[4],10,"S",1,0,"C");
+			else
 
-	  		/*foreach ($valor as $dato){
-	  			if (strcmp($dato,"0") == 0){
-	  				$dato="N";
-	  			}
-	  			else{
-	  				if (strcmp($dato,"1") == 0)
-	  					$dato="S";
-	  			}
-	  			$pdf->Cell($anchura[$i],10,$dato,1,0,"C");
-	    		$i++;
-	   		 }*/
+				$pdf->Cell($anchura[4],10,"",1,0,"C");
+			$pdf->SetFont('Arial','',8);		
+			$pdf->Cell($anchura[5],10,$lotAnterior['valoracio'],1,0,"C");
+			$pdf->Cell($anchura[5],10,$valor['valoracioglobal'],1,0,"C");
 	    	$pdf->Ln();
 	  	}
 	  	$pdf->Ln();

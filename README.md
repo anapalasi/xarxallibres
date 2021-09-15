@@ -1,4 +1,4 @@
-# xarxallibres2
+# xarxallibres
 
 Para actualizar las contraseñas de los profesores con funcion hash
 UPDATE `Profesor` SET `contrasenya`=sha2(contrasenya,512)

@@ -40,10 +40,11 @@
 <br><br><h3 class="texto"> Altres operacions </h3>
         <br> <a href="demanaLot.php"> Actualitzar informacio d'un lot </a>
         <br> <a href="puntuacionsLots.php"> Consultar puntuacions lots </a>
-        <br><a href="dadesLotAlumne.php"> Consultar alumnes i dades de lots assignats </a>
-
-	
-
+<a href="dadesLotAlumne.php"> Consultar alumnes i dades de lots assignats </a>
+<br><br>
+<br> <h3 class="texto"> Gestió nou curs </h3>
+<br><a href="nousprofes.php"> Actualitza nou professorat </a>	
+<br><br>
   <br><br><a href="close.php">Cerrar Sesion</a>
 </body>
 </html>

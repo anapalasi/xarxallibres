@@ -21,11 +21,10 @@
 	while (($datos = fgetcsv($archivo, ",")) == true)
 	{
 		$num = count($datos);
-		//Recorremos las columnas de esa linea
-		  for ($columna = 0; $columna<$num; $columna++)
-		      {
-		         echo $datos[$columna] . "\n";
-		     }		 
+		$nif=$datos[1];
+
+//		if (str_starts_with($nif,'0'))
+			echo $nif. "<br>";
 	}
 	//Cerramos el archivo
 	fclose($archivo);

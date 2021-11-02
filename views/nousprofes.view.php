@@ -12,8 +12,13 @@
 <body class="bg-image">
   <h1 align="center" class="texto"> Actualització nou professorat  </h1>
   <p align="center"> <img src="img/xarxa_llibres-300x150.png" alt="Logo Xarxa Llibres"></p><br>
-<h2 class="texto"> Introdueix el fitxer amb personal del centre </h2>
-<br> El fitxer ha d'estar en format CSV, separat amb comes, separaćió de cadenes amb "" i amb codificació ISO-8859-13 <br> 
+<h2 class="texto"> Procediment per actualitzar el nou professorat </h2>
+<br>
+<ol> 
+<li> Mirar en el fitxer CVS si els accents, ç i ñ estan ben ficats </li>
+<li> Introduir el fitxer Personal.CVS. El fitxer ha d'estar en format CSV, separat amb comes, separació de cadenes amb "" i amb codificació ISO-8859-13 </li>
+<li> Actualitzar el codi de departament en cadascun dels usuaris nous </li>
+</ol><br> 
 <form action="actualitzaProfessorat.php" method="post" enctype="multipart/form-data">
 <input type="file" id="professorat" name="professorat" accept=".csv">
 <br><br>

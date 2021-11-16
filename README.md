@@ -13,7 +13,7 @@ Para actualizar las contraseñas de los profesores con funcion hash
 
 Puede dar un error porque no quepa en el campo. Se debe hacer entonces el campo contraseña mas largo
 
-## Actualización contenidos
+## Actualización asignaturas
 
 1. Exportar contenidos de ITACA
 2. [Pasar de xml a csv](https://www.convertcsv.com/xml-to-csv.htm)
@@ -26,7 +26,7 @@ Puede dar un error porque no quepa en el campo. Se debe hacer entonces el campo 
   * 2712304896 por 4ESO
   * 2712304946 por PR4
   * Eliminar el resto de filas
-
+5. Crear una columna amb el codi del departament anomenada codi_dept. Eliminar les tutories
 
 ## Actualización grupos profesores
 
@@ -58,3 +58,4 @@ Puede dar un error porque no quepa en el campo. Se debe hacer entonces el campo 
 * Crear una tabla dinámica con **Campos fila**: *docente, dia_semana, sesion_orden* y **Campos datos** *Recuento grupos*
 * Crear un formato condicional para que resalte cuando el recuento sea > 1 que significará que el docente más de un grupo en una sesión.
 * Buscar las asignaturas que tienen más de un grupo y apuntarlas.
+

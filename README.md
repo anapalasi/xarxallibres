@@ -1,4 +1,4 @@
-# xarxallibres
+# Xarxallibres
 
 ## Poner seguridad a las contraseñas de los profesores.
 

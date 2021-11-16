@@ -13,6 +13,21 @@ Para actualizar las contraseñas de los profesores con funcion hash
 
 Puede dar un error porque no quepa en el campo. Se debe hacer entonces el campo contraseña mas largo
 
+## Actualización contenidos
+
+1. Exportar contenidos de ITACA
+2. [Pasar de xml a csv](https://www.convertcsv.com/xml-to-csv.htm)
+3. Eliminar las columnas Enseñanza y nombre en castellano
+4. Substituir en curso:
+  1. 2712304870 por 1ESO
+  2. 2712304883 por 2ESO
+  3. 2712304855 por 3ESO
+  4. 2712304926 por 3PMAR
+  5. 2712304896 por 4ESO
+  6. 2712304946 por PR4
+  7. Eliminar el resto de filas
+
+
 ## Actualización grupos profesores
 
 * Importar de ITACA *contenido_matricula* y *horarios_grupo*

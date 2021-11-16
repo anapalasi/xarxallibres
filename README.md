@@ -31,5 +31,6 @@ Puede dar un error porque no quepa en el campo. Se debe hacer entonces el campo 
 * *Datos-> Filtro automático* y seleccionar que *Repetido* sea verdadero
 * Se eliminan las columnas repetidos. Se seleccionan las filas con *Repetido = Verdadero* y con el menú *Hoja-> Eliminar filas*
 * Eliminar columnas *Repetido* y *Texto*
+* Eliminar filas de las enseñanzas de Bachillerato y Ciclos
 * Crear una tabla dinámica con **Campos fila**: *docente, dia_semana, sesion_orden* y **Campos datos** *Recuento grupos*
 * Crear un formato condicional para que resalte cuando el recuento sea > 1 que significará que el docente más de un grupo en una sesión

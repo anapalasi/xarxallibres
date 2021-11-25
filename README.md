@@ -62,7 +62,7 @@ Puede dar un error porque no quepa en el campo. Se debe hacer entonces el campo 
 * Crear un formato condicional para que resalte cuando el recuento sea > 1 que significará que el docente más de un grupo en una sesión.
 * Buscar las asignaturas que tienen más de un grupo y apuntarlas.
 * Ordenar los datos por docente, grupo, dia_semana de modo ascendente.
-* Crear una columna que concatene el número de año (21), grupo y el contenido. *=CONCAT("21";D2;C2)* Ejemplo:21LCLLOMCE3ESOE
+* Crear una columna llamada id_grupo que concatene el número de año (21), grupo y el contenido. *=CONCAT("21";D2;C2)* Ejemplo:21LCLLOMCE3ESOE
 * Eliminamos los repetidos creando una columna que compare los campos del anterior punto *=F2=F1*. Filtramos los que son verdaderos y elimimanos las filas
-* Eliminar la columna anterior
+* Eliminar la columna anterior.
 

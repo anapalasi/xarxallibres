@@ -45,6 +45,7 @@
 <br> <h3 class="texto"> Gestió nou curs </h3>
 <br><a href="nousprofes.php"> Actualitza nou professorat </a>	
 <br><a href="novesassignatures.php"> Actualitza noves assignatures </a>
+<br><a href="nousgrups.php"> Actualitza nous grups </a>
 <br><br>
   <br><br><a href="close.php">Cerrar Sesion</a>
 </body>

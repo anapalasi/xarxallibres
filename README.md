@@ -27,9 +27,9 @@ Puede dar un error porque no quepa en el campo. Se debe hacer entonces el campo 
   * 2712304946 por PR4
   * Eliminar el resto de filas
 5. Crear una columna amb el codi del departament anomenada codi_dept. Eliminar les tutories i assignatures del Fons Social Europeu
-6. Crear la columna de codi amb la concatenació de la columna curs i codi =CONCAT(A2;"_";B2)
+6. Crear la columna de codi amb la concatenació de la columna curs i codi *=CONCAT(A2;"_";B2)*
 7. Apegar el text en la columna de codi i eliminar la columna creada en el punt anterior
-8. 
+8. Entrar como administrador e ir al apartado correspondiente de actualizar asignaturas.
 
 ## Actualización grupos profesores
 

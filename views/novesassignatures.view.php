@@ -12,7 +12,7 @@
 <body class="bg-image">
   <h1 align="center" class="texto"> Actualització noves assignatures  </h1>
   <p align="center"> <img src="img/xarxa_llibres-300x150.png" alt="Logo Xarxa Llibres"></p><br>
-<h2 class="texto"> Procediment per actualitzar noves   </h2>
+<h2 class="texto"> Procediment per actualitzar noves assignatures   </h2>
 <br>
 <ol>
 <li> Obtenir els continguts d'ITACA i passar-los a csv

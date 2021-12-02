@@ -66,8 +66,12 @@
 <li>    Eliminar la columna anterior.
  
 </ol><br> 
-<form action="actualitzaProfessorat.php" method="post" enctype="multipart/form-data">
-<input type="file" id="professorat" name="professorat" accept=".csv">
+<form action="actualitzaGrups.php" method="post" enctype="multipart/form-data">
+Curs acadèmic (has de ficar els dos últims números del primer any YY)
+<br> 
+<input type="number" name="curs" min="21" max="99">
+<br><br>
+<input type="file" id="grups" name="grups" accept=".csv">
 <br><br>
  <p align="center">  
  <button type="submit" value="submit"> Pujar fitxer </button> </p> 

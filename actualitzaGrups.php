@@ -50,7 +50,7 @@
 				// Creem el grup
 				$id_grupo=$datos[5];
 				$sentencia="insert into Grupo (id_grupo, descripcion, curso_academico, id_asignatura) values (\"";
-				$sentencia = $sentencia. $id_grupo."\",\"". utf8_encode($descripcion). "\",\"". $curs_academic;
+				$sentencia = $sentencia. $id_grupo."\",\"". $descripcion. "\",\"". $curs_academic;
 				$sentencia = $sentencia . "\",\"". $id_asignatura."\")";
 				executaSentencia($conexion,$sentencia);
 

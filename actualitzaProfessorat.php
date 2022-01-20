@@ -41,6 +41,21 @@
 				$sentencia ="UPDATE Profesor SET contrasenya=sha2(contrasenya,512) where dni=\"$nif\"";
 				executaSentencia($conexion, $sentencia);
 			}
+			$tutor=$datos[8];
+			if (!empty($tutor)){
+				// Obtenemos la fecha actual
+				$hoy=getdate();
+				$anyo=$hoy["year"];
+				$anyo_dos=substr($anyo,-2); // Obtenemos los dos últimos numeros del anyo
+				$mes=$hoy["mon"];
+				if ($mes<9)
+					$anyo_dos--;
+				$tutoria=$anyo_dos."_".$tutor;
+				
+				// Asignamos el tutor a la clase (no comprobamos si está vacío porqué puede ser un sustituto
+				$sentencia ="update Tutoria set dni_tutor=\"". $nif. "\" where id_tutoria=\"". $tutoria ."\"";
+				executaSentencia($conexion, $sentencia);
+			}
 
 			
 			
@@ -48,5 +63,5 @@
 	}
 	//Cerramos el archivo
 	fclose($archivo);
-	echo "Fin";
+	echo "Llistat de professorat actualitzat";
 ?>

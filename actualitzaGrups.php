@@ -43,9 +43,10 @@
 			$sentencia="select nombre from Asignatura where id_asignatura=\"". $id_asignatura."\"";
 			$resultado=executaSentencia($conexion,$sentencia);
 			$descripcion=$resultado["nombre"]." ". $datos[2] ;
-
+ 			
 			// Comprobamos que la asignatura existe
 			if (strcmp($descripcion,"") !=0){
+
 
 				// Creem el grup
 				$id_grupo=$datos[5];

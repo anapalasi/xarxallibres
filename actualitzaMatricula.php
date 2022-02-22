@@ -19,6 +19,7 @@
 	//Lo recorremos
 
 	$senseGrup=array();
+	$insertados=0;
 
 	while (($datos = fgetcsv($archivo, ",")) == true)
 	{
@@ -58,7 +59,9 @@
 
 				//Buscar las asignaturas con libros.
 				$sentencia="select * from Libro where id_asignatura=\"". $asignatura_libro."\"";
+				//echo $sentencia. " ";
 				$resultat=executaSentencia($conexion,$sentencia);
+			//	echo $resultat["isbn"]."<br>";
 				// Si hi ha un llibre associat hem de crear el grup
 				if (strcmp($resultat["isbn"],"")!=0){
 					// Falta buscar el grup al que pertany a l'alumne (ojo desdobles)
@@ -73,6 +76,14 @@
 							array_push($senseGrup,$grupo);
 						}
 					}
+					// Si el grup existeix inserim l'alumne al grup
+					else{
+						$insertados=$insertados+1;
+						$sentencia ="insert into AlumnoGrupo values(\"". $nia. "\",\"". $grupo."\")";
+//						echo $sentencia. "<br>";
+						executaSentencia($conexion,$sentencia);			
+					}
+					 
 
 				}
 			}
@@ -80,8 +91,9 @@
 	}
 	//Cerramos el archivo
 	fclose($archivo);
+	echo "Grups no trobats" . "<br>";
 	foreach ($senseGrup as $grup){
 		echo $grup . "<br>";
 	}
-	echo "Llistat de professorat actualitzat";
+	echo "S'han creat " . $insertados . " associacions alumnat-grup";
 ?>

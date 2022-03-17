@@ -49,8 +49,17 @@
 	// Insertamos alumno en la base de datos
 	executaSentencia($conexion, $sentencia);
 
+	// Obtenemos el curso actual
+        $hoy=getdate();
+        $anyo=$hoy["year"];
+        $anyo_dos=substr($anyo,-2); // Obtenemos los dos últimos numeros del anyo
+        $mes=$hoy["mon"];
+        if ($mes<9)
+             $anyo_dos--;
+
+
 	// Buscamos los grupos a los que pertenece la clase
-	$sentencia ="SELECT distinct id_grupo FROM `AlumnoGrupo` AG, Alumno A where A.nia=AG.nia and A.id_tutoria=\"". $_POST['tutoria']."\"";
+	$sentencia ="SELECT distinct id_grupo FROM `AlumnoGrupo` AG, Alumno A where A.nia=AG.nia and A.id_tutoria=\"". $_POST['tutoria']."\" and AG.id_grupo like '". $anyo_dos ."%'";
 	$grupos=executaSentenciaTotsResultats($conexion, $sentencia);
 
 	// Insertamos el alumno nuevo en dichos grupos
@@ -58,6 +67,10 @@
 		$sentencia="insert into AlumnoGrupo (nia, id_grupo) VALUES (\"". $_POST['nia']."\", \"". $grupo["id_grupo"]. "\")";
 		executaSentencia($conexion, $sentencia);	
 	}
+	
+	// Poner que el lote está repartido
+	$sentencia = "update Lote set repartit=\"1\" where id_lote=\"". $_POST['id_lote'] . "\"";
+	executaSentencia($conexion,$sentencia);
 
 	echo $_POST["nombre"]. " ". $_POST["apellido1"]. " ha sigut donat d'alta <br>";
 

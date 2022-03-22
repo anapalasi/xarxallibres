@@ -14,6 +14,8 @@
   <p align="center"> <img src="img/xarxa_llibres-300x150.png" alt="Logo Xarxa Llibres"></p><br>
   <h2 class="texto" align="center"> Dades de l'alumne/a
   </h2>
+<br>
+  Selecciona els checkbox corresponents depenent de si l'alumne canvia de tutoria, optativa o ambdues
   <br>
   <form action="actualitzaGrupAlumne.php" method="post">
 	  <table border="1" align="center" bgcolor="white">

@@ -32,6 +32,7 @@
 <br> <h3 class="texto"> Gestió alumnat </h3>
 <br> <a href="repetidors.php"> Alumnes repetidors </a>
 <br> <a href="altaAlumno.php"> Donar d'alta a un alumne </a>
+<br><a href="bajaAlumno.php"> Donar de baixa a un alumne </a>
 <br> <a href="canviGrup.php"> Canviar alumne de grup </a><br>
 
 <br> <h3 class="texto"> Gestió assignació de llibres </h3>

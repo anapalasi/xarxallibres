@@ -14,9 +14,11 @@
   <p align="center"> <img src="img/xarxa_llibres-300x150.png" alt="Logo Xarxa Llibres"></p><br>
 <h2 class="texto"> Procediment per actualitzar el nou professorat </h2>
 <br>
-<ol> 
-<li> Mirar en el fitxer CVS si els accents, ç i ñ estan ben ficats </li>
-<li> Introduir el fitxer Personal.CVS. El fitxer ha d'estar en format CSV, separat amb comes, separació de cadenes amb "" i amb codificació ISO-8859-13 </li>
+<ol>
+<li> Anar a ITACA - Importar i exportar </li>
+<li> Exportar Personal Docent en XML </li>
+<li> Anar a la <a href="https://www.convertcsv.com/xml-to-csv.htm"> següent web </a> per canviar XML a CSV. Ho exporta amb codificació UTF-8 </li>
+<li>El fitxer  d'estar en format CSV, separat amb comes, separació de cadenes amb "" i amb codificació UTF-8 </li>
 <li> Actualitzar el codi de departament en cadascun dels usuaris nous </li>
 </ol><br> 
 <form action="actualitzaProfessorat.php" method="post" enctype="multipart/form-data">

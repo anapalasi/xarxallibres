@@ -47,7 +47,8 @@
 <a href="dadesLotAlumne.php"> Consultar alumnes i dades de lots assignats </a>
 <br><br>
 <br> <h3 class="texto"> Gestió nou curs </h3>
-<br><a href="nousprofes.php"> Actualitza nou professorat </a>	
+<br><a href="nousprofes.php"> Actualitza nou professorat </a>
+<br><a href="professoratSubstitut.php"> Gestió de substitucions de professorat </a>	
 <br><a href="novesassignatures.php"> Actualitza noves assignatures </a>
 <br><a href="nousgrups.php"> Actualitza nous grups </a>
 <br><a href="matricula.php"> Actualitza matrícula de l'alumnat </a>

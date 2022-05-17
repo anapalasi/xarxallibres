@@ -28,7 +28,9 @@ function conexion($bd_config){
 
 	/* Funcion que comprueba si el usuario es tutor de un grupo*/
 	function esTutor($conexion){
-		$statement = $conexion->prepare("SELECT * FROM Tutoria  where dni_tutor = :dni");
+		$curso=calculaCurso(); // Filtramos los cursos anteriores al actual
+		$sentencia="SELECT * FROM Tutoria where dni_tutor =:dni and substr(id_tutoria,1,2) = " . $curso;
+		$statement = $conexion->prepare($sentencia);
 		$statement->execute([ ':dni' => $_SESSION['usuario']]);
 	 	return	$statement->fetch(PDO::FETCH_ASSOC);
 	}

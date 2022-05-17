@@ -35,7 +35,8 @@ function conexion($bd_config){
 
 	/* Funcion que extrae datos de los grupos donde el profesor tiene libros a valorar */
 	function GrupoLibro($conexion, $dni){
-		$sentencia= "SELECT distinct G.id_grupo, descripcion from Grupo G, GrupoProfesor GP, Libro L where G.id_grupo = GP.id_grupo and G.id_asignatura = L.id_asignatura and GP.dni= :dni";
+		$curso=calculaCurso();
+		$sentencia= "SELECT distinct G.id_grupo, descripcion from Grupo G, GrupoProfesor GP, Libro L where G.id_grupo = GP.id_grupo and G.id_asignatura = L.id_asignatura and GP.dni= :dni and substr(G.id_grupo,1,2) =" .$curso;
 		$statement = $conexion->prepare($sentencia);
 		$statement->execute([ ':dni' => $dni ]);
 	 	return	$statement->fetchAll(PDO::FETCH_ASSOC);
@@ -490,5 +491,18 @@ function conexion($bd_config){
         $sentencia = "select concat(A.nombre,\" \", A.apellido1, \" \", A.apellido2), A.id_lote, A.repetidor, L.repartit, L.folres, L.valoracioglobal from Historico H, Alumno A, Lote L where A.nia=H.nia and H.curso=\"2020\" and L.id_lote=H.id_lote and banc_llibres=\"1\" and A.id_tutoria=\"" . $tutoria. "\" order by A.apellido1, A.apellido2,A.nombre" ; 
         $resultat = executaSentenciaTotsResultats($conexion, $sentencia);
         return $resultat;
+	}
+	
+    /* Funcio que calcula el curs actual */
+	function calculaCurso(){
+		$hoy=getdate();
+		$anyo=$hoy["year"];
+		$anyo_dos=substr($anyo,-2); // Obtenemos el anyo en dos cifras
+		$mes=$hoy["mon"];
+
+		// Si el mes es antes de septiembre modificamos el curso
+		if ($mes<9)
+			$anyo_dos--;
+		return $anyo_dos;
 	}
 

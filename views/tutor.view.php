@@ -40,7 +40,7 @@
     <th> Nom  </th>
     <th> Identificador del lot </th>
     <th> Tornat </th>
-    <th> Folres </th>
+  <!--  <th> Folres </th> -->
     <th> Repetidor </th>
     <th> Observacions </th>
   </tr>
@@ -75,14 +75,14 @@
 		echo " checked";
        	echo ">";	
         echo "</td>";
-        echo "<td align=\"center\">";
+/*        echo "<td align=\"center\">";
         echo "<input type=\"checkbox\" name=\"folres[]\" value=\"";
         echo $alumne["lote"];
         echo "\" ";
         if ($alumne["folres"] == 1)
 		echo " checked";
         echo ">";	
-        echo "</td>";
+	echo "</td>";*/
   echo "<td align=\"center\">";
   echo "<input type=\"checkbox\" name=\"repetidor[]\" value=\"";
   echo $alumne["nia"];

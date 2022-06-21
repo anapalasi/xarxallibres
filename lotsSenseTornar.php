@@ -13,13 +13,13 @@
 	$conexion = conexion($bd_config);
 
 
-	$cabecera=array('Alumne','Lot','Tutoria');
-	$anchura=array(90,30,50);
+	$cabecera=array('Alumne','Lot','Tutoria','Valoracio');
+	$anchura=array(70,30,30,100);
 	
 	$filas=LotsPerTornar($conexion);
 
 
-	$pdf = new PDF();
+	$pdf = new PDF("L");
 	$pdf->AliasNbPages();
 	$pdf->AddPage();
 	$pdf->SetFont('Arial','B',16);

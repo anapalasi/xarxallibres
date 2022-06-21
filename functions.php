@@ -206,7 +206,7 @@ function conexion($bd_config){
 	
 	function LotsPerTornar($conexion){
 		$curs=calculaCurso();
-		$sentencia="SELECT concat(A.nombre,' ', A.apellido1,' ', A.apellido2), A.id_lote as lote, A.id_tutoria FROM Lote L, Alumno A WHERE repartit=1 and L.id_lote = A.id_lote and id_tutoria like '". $curs . "_%ESO%' and A.id_lote != \"NULL\" and A.repetidor != 1 order by A.id_tutoria, A.apellido1, A.apellido2";
+		$sentencia="SELECT concat(A.nombre,' ', A.apellido1,' ', A.apellido2), A.id_lote as lote, A.id_tutoria, L.valoracioglobal as valoracio FROM Lote L, Alumno A WHERE repartit=1 and L.id_lote = A.id_lote and id_tutoria like '". $curs . "_%ESO%' and A.id_lote != \"NULL\" order by A.id_tutoria, A.apellido1, A.apellido2";
 		$resultat=executaSentenciaTotsResultats($conexion,$sentencia);
 		return $resultat;
 	}

@@ -14,7 +14,7 @@
 
 
 	$cabecera=array('Alumne','Lot','Tutoria','Valoracio');
-	$anchura=array(70,30,30,100);
+	$anchura=array(70,30,30,120);
 	
 	$filas=LotsPerTornar($conexion);
 

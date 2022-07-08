@@ -511,4 +511,10 @@ function conexion($bd_config){
 			$anyo_dos--;
 		return $anyo_dos;
 	}
-
+	
+// Funcion que actualiza el historico
+	function actualizaHistorico(){
+		$curso=calculaCurso();
+		$sentencia="select concat(concat(". $curso.",_),L.id_lote) as id_historico, concat(20,". $curso. ") as curso, A.nia, A.id_tutoria, E.id_lote, sum(E.puntos) as puntos from Lote L, Ejemplar E, Alumno A where L.id_lote = E.id_lote and A.id_lote=L.id_lote and A.id_tutoria like '". $curso. "%' group by E.id_lote, A.nia";
+		$resultats=executaSetenciaTotsResultats();
+	}

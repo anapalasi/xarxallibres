@@ -213,7 +213,8 @@ function conexion($bd_config){
 
 	/* Obtenir les valoracions globals dels lots no buides */
 	function valoracioLots($conexion){
-		$sentencia="SELECT A.nombre, A.apellido1, A. apellido2, A.id_lote as lote, L.valoracioglobal as valoracio, A.id_tutoria FROM Lote L, Alumno A where L.valoracioglobal !=\"\"  and A.id_lote = L.id_lote ORDER BY A.id_tutoria, A.apellido1, A.apellido2, A. nombre";
+		$curso=calculaCurso();
+		$sentencia="SELECT A.nombre, A.apellido1, A. apellido2, A.id_lote as lote, L.valoracioglobal as valoracio, A.id_tutoria FROM Lote L, Alumno A where L.valoracioglobal !=\"\"  and A.id_lote = L.id_lote and id_tutoria like '" . $curso."%'  ORDER BY A.id_tutoria, A.apellido1, A.apellido2, A. nombre";
 		$resultat=executaSentenciaTotsResultats($conexion, $sentencia);
 		return $resultat;
 	}

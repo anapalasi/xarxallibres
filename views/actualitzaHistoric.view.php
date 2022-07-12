@@ -15,6 +15,7 @@
 <h2 class="texto"> Procediment per actualitzar l'històric  </h2>
 <br> Amb les dades del curs anterior es crea una taula on es guarda quin lot estava assignat a cada alumne, a quina tutoria pertanyia
 <br><br>
+S'han actualitzat <?php echo $nous_registres; ?> dades històriques <br> <br>
 <a href="<?php
   if ($usuario['rol'] == 'administrador')
   {

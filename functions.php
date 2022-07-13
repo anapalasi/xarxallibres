@@ -518,16 +518,7 @@ function conexion($bd_config){
 		$sentencia="select A.nia, A.id_tutoria, E.id_lote, sum(E.puntos) as puntos, concat(\"20\",\"". $curso. "\") as curso, concat(concat(\"". $curso."\",\"_\"),E.id_lote)  as id_historico from Lote L, Ejemplar E, Alumno A where L.id_lote=E.id_lote and A.id_lote=L.id_lote  and id_tutoria like '" . $curso . "%' group by E.id_lote, A.nia, A.id_tutoria";
 		$resultat = executaSentenciaTotsResultats($conexion, $sentencia);
 		
-		 $nous_registres=0; // Nombre de nous registres que s'actualitzaran
-
- 	        foreach ($resultat as $historic){
-         	       $nous_registres++;
-		       $sentencia="INSERT INTO Historico(id_histórico, curso, puntos, id_lote, nia, id_tutoria) VALUES (\"". $historic['id_historico']."\",\"".$historic['curso']."\",\"". $historic['puntos']."\",\"". $historic['id_lote']. "\",\"".$historic['nia']. "\",\"". $historic['id_tutoria']. "\")";
-		       echo $sentencia . "<br>";
-		       $ok = executaSentencia($conexion, $sentencia);
-
-        	}
-		return $nous_registres;
+		return $resultat;
 
 		
 

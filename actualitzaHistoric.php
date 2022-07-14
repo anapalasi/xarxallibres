@@ -26,8 +26,6 @@
 	   }
 	}
 
-	$id=$conexion->lastInsertId();
-	var_dump($id);
 	require 'views/actualitzaHistoric.view.php';
 
 ?>

@@ -16,6 +16,7 @@
 <br> Amb les dades del curs anterior es crea una taula on es guarda quin lot estava assignat a cada alumne, a quina tutoria pertanyia
 <br><br>
 S'han actualitzat <?php echo $nous_registres; ?> dades històriques <br> <br>
+<br><br> COMPROVAR QUE LES DADES S'HAN COPIAT CORRECTAMENT <br><br>
 <a href="<?php
   if ($usuario['rol'] == 'administrador')
   {

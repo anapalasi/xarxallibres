@@ -44,10 +44,11 @@
 <br><br><h3 class="texto"> Altres operacions </h3>
         <br> <a href="demanaLot.php"> Actualitzar informacio d'un lot </a>
         <br> <a href="puntuacionsLots.php"> Consultar puntuacions lots </a>
-<a href="dadesLotAlumne.php"> Consultar alumnes i dades de lots assignats </a>
+        <br> <a href="dadesLotAlumne.php"> Consultar alumnes i dades de lots assignats </a>
 <br><br>
 <br> <h3 class="texto"> Gestió nou curs </h3>
 <br> <a href="actualitzaHistoric.php"> Actualiza l'històric amb les dades del curs anterior(abans de començar el següent) </a>
+<br> <a href="esborrarllibres.php"> Esborrar llibres antics </a>
 <br><a href="nousprofes.php"> Actualitza nou professorat </a>
 <br><a href="professoratSubstitut.php"> Gestió de substitucions de professorat </a>	
 <br><a href="novesassignatures.php"> Actualitza noves assignatures </a>

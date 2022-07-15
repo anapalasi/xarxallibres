@@ -21,12 +21,13 @@
    <?php
       foreach ($resultat as $llibre) {
         $titulo=$llibre['titulo'];
-          echo "<option value=\"". $titulo. "\">". $titulo . "( " .$llibre['id_asignatura']. ") </option>";
+          echo "<option value=\"". $llibre['isbn']. "\">". $titulo . "( " .$llibre['id_asignatura']. ") </option>";
       }
   ?>
  
 </select>
-<br> <br> Comprova que és el llibre perquè no es pot canviar<br> <br> 
+<br> <br> Comprova que és el llibre perquè no es pot canviar<br> <br>
+<p align="center"><input type="submit" name="esborra"  value="Esborra llibre" ><br> <br>
 </form> 
 <a href="<?php
   if ($usuario['rol'] == 'administrador')

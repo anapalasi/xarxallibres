@@ -37,6 +37,8 @@
 
 <br> <h3 class="texto"> Gestió assignació de llibres </h3>
 <br> <a href="nousGrups.php"> Assignació de grups del següent curs</a>
+<br> <a href="novaMatricula.php"> Carregar nova matrícula</a>
+
 <br><a href="simulacioAssignacio.php"> Simulació assignació llibres per cursos </a>
 <br><a href="distribucioLots.php"> Distribucions nous lots per tutories per al següent curs</a>
 <br><a href="nousLots.php"> Crear un nou lot </a>

@@ -11,10 +11,11 @@
 	$conexion = conexion($bd_config);
 	
 	// Obtenemos los alumnos del nivel elegido
-
+	$curso=calculaCurso();
+	echo $curso;
 	if (strcmp($_POST['tutoria'],"nous") !=0){
 		$tutoria=$_POST['tutoria'];
-		$sentencia = "select * from Alumno where id_tutoria like '20_" . $tutoria . "%' order by apellido1, apellido2, nombre";
+		$sentencia = "select * from Alumno where id_tutoria like '" . $curso."_" . $tutoria . "%' order by apellido1, apellido2, nombre";
 	}
 	else{
 		$sentencia = "select * from Alumno where id_tutoria=\"NULL\" order by apellido1, apellido2, nombre";
@@ -22,7 +23,8 @@
 
 	$alumnos = executaSentenciaTotsResultats($conexion, $sentencia);
 
-	$sentencia = "select id_tutoria from Tutoria where id_tutoria like '21_%ESO%' order by id_tutoria";
+	$cursoPosterior = $curso +1;
+	$sentencia = "select id_tutoria from Tutoria where id_tutoria like '" . $cursoPosterior. "_%ESO%' order by id_tutoria";
 	$nuevasTutorias = executaSentenciaTotsResultats($conexion, $sentencia);
 
 
@@ -34,13 +36,13 @@
   	echo "<meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">";
  	echo "<link rel=\"stylesheet\" href=\"css/font-awesome.min.css\">";
     echo "<link rel=\"stylesheet\" href=\"css/style.css\">";
-    echo "<title>Nous grups curs 21/22 </title> ";
+    echo "<title>Grups curs següent </title> ";
     echo "<head>";
 	echo "<body class=\"bg-image\">";
 	echo "<p align=\"center\"> <img src=\"img/xarxa_llibres-300x150.png\" alt=\"Logo Xarxa Llibres\"></p><br>";
 	echo "<center><h1 class=\"texto\"> Alumnes de ";
 	echo $tutoria;
-	echo " en el curs 20/21 </h1></center>";
+	echo " en el curs actual </h1></center>";
 	echo "<br><br>";
 	echo " <form action=\"assignacioNousGrups.php\" method=\"post\" width=\"100%\">";
 	echo " <table border=\"1\" align=\"center\" bgcolor=\"white\" width=\"100%\">";

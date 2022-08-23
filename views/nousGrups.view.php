@@ -10,7 +10,7 @@
   <title>Alta alumne </title>
 </head>
 <body class="bg-image">
-  <h1 align="center" class="texto"> Assignació nous grups per al curs 2021/2022  </h1>
+  <h1 align="center" class="texto"> Assignació nous grups per al curs següent </h1>
   <p align="center"> <img src="img/xarxa_llibres-300x150.png" alt="Logo Xarxa Llibres"></p><br>
   <h2 class="texto" align="center"> Cursos
   </h2>

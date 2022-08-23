@@ -32,6 +32,7 @@
 		</select>
 		</td>
 	</tr>
+  <tr><td> Curs que comença (en dos dígits)</td><td><input type="number" name="curs"></td></tr>
   <tr>
     <td colspan="2"><input type="checkbox" name="assignacio"> Assignar lots de l'assignació</td>
   </tr>

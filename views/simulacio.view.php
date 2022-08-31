@@ -121,7 +121,7 @@
     }
     else {
       if (count($mostrarAssignacions) == 2){ // 3r
-        echo "<h2 class=\"texto\"> Alumnat de 3r de Reforç </h2>";
+        /*echo "<h2 class=\"texto\"> Alumnat de 3r de Reforç </h2>";
         $aplicats = $mostrarAssignacions[0];
         echo "<center><table border=\"1\" bgcolor=\"white\" align=\"center\"> <tr><th> NIA </th><th> Nombre </th> <th> Lote </th><th>Puntos</th><th> Aula on està el lot </th></tr>";
         foreach ($aplicats as $alumnat){
@@ -144,7 +144,7 @@
           echo "</tr>";
         }
     
-        echo "</table></center>";    
+        echo "</table></center>";*/    
         echo "<h2 class=\"texto\"> Alumnat de 3r Acadèmic </h2>";
         $academics = $mostrarAssignacions[1];
 
@@ -178,7 +178,7 @@
         $academics = $mostrarAssignacions[0];
 
 
-        echo "<center><table border=\"1\" bgcolor=\"white\" align=\"center\"> <tr><th> NIA </th><th> Nombre </th> <th> Lote </th><th>Puntos</th><th> Aula on està el lot </th></tr>";
+        echo "<center><table border=\"1\" bgcolor=\"white\" align=\"center\"> <tr><th> NIA </th><th> Nombre </th> <th> Lote </th><th>Puntos</th></tr>";
         foreach ($academics as $alumnat){
             echo "<tr>";
             echo "<td>";
@@ -193,9 +193,6 @@
              echo "<td>";
             echo $alumnat['puntos'];
             echo "</td>";
-             echo "<td>";
-            echo  $alumnat['id_aula'];
-            echo "</td>";
             echo "</tr>";
 
         }
@@ -207,7 +204,7 @@
     if (count($alumnesSenseAssignar) !=0 ){
       echo "<h2 class=\"texto\"> Alumnat sense lot </h2>";
 
-      echo "<center><table border=\"1\" bgcolor=\"white\" align=\"center\"> <tr><th> NIA </th><th> Nombre </th> <th> Opcio </th><th>Puntos</th><th> Aula on està l'alumne</th></tr>";
+      echo "<center><table border=\"1\" bgcolor=\"white\" align=\"center\"> <tr><th> NIA </th><th> Nombre </th> <th> Opcio </th><th>Puntos</th></tr>";
       foreach ($alumnesSenseAssignar as $alumnat){
         echo "<tr>";
         echo "<td>";
@@ -221,9 +218,6 @@
         echo "</td>";
          echo "<td>";
         echo $alumnat['puntos'];
-        echo "</td>";
-         echo "<td>";
-        echo $alumnat['id_aula'];
         echo "</td>";
         echo "</tr>";
 

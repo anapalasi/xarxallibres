@@ -341,14 +341,14 @@ function conexion($bd_config){
 		
 
 		// Array con las aulas donde se encuentran los lotes
-		$aulas=array();
+		//$aulas=array();
 
 		$lotsPerAssignar=array();
 			foreach ($lots as $lot){
 				$aux['id_lote']=$lot['id_lote'];
 				$aux['puntos']=$lot['puntos'];
 				$aux['repartit']=$lot['repartit'];
-				if ($lot['retirat']){
+			/*	if ($lot['retirat']){
 					$aux['id_aula']="Magatzem";
 				}
 				else{
@@ -359,15 +359,15 @@ function conexion($bd_config){
 				}
 				$aux['usat']=0;
 
-				array_push($lotsPerAssignar, $aux);
+				array_push($lotsPerAssignar, $aux);*/
 			}
 		
 
 		// Ordenamos de menor a mayor las aulas que contienen lotes
-		asort($aulas);
+		//asort($aulas);
 
 		// Obtenemos las aulas de los alumnos
-		$aulasAlumnos=array();
+		/*$aulasAlumnos=array();
 
 		foreach ($alumnes as $alumne){
 			$aula = $alumne['id_aula'];
@@ -376,9 +376,9 @@ function conexion($bd_config){
 		}
 
 		asort($aulasAlumnos);
-
+		*/
 		// Comprobamos si alguna de las aulas de los alumnos coincide con la de los libros
-		$noCoinciden=1;
+	/*	$noCoinciden=1;
 		$num_aulas=count($aulasAlumnos);
 		$i=0;
 
@@ -388,7 +388,7 @@ function conexion($bd_config){
 				$noCoinciden=0;
 			$i++;
 		}
-
+*/
 		$lotsAssignats=array();
 
 		// Comprobamos si tenemos mayor numero de lotes que de alumnos
@@ -397,11 +397,11 @@ function conexion($bd_config){
 		else
 			$maxim=count($alumnes);
 
-		if ($noCoinciden){
+	/*	if ($noCoinciden){
 			// En este caso los lotes se asignan por orden
-			echo "No hay aulas coincidentes";
+			//echo "No hay aulas coincidentes";
 
-
+*/
 			for ($i=0;$i<$maxim;$i++){
 				$lot=array();
 
@@ -411,17 +411,17 @@ function conexion($bd_config){
 				$lot['apellido2']=$alumnes[$i]['apellido2'];
 				$lot['id_lote']=$lots[$i]['id_lote'];
 				$lot['puntos']=$lots[$i]['puntos'];
-				if ($lot[$i]['retirat'])
+			/*	if ($lot[$i]['retirat'])
 					$lot['id_aula']="Magatzem";
 				else
-					$lot['id_aula']=$lots[$i]['id_aula'];
+					$lot['id_aula']=$lots[$i]['id_aula'];*/
 
 				array_push($lotsAssignats, $lot);
 			}
-		}
+	/*	}
 		else
 		{
-			echo "Hay aulas coincidentes";
+			//echo "Hay aulas coincidentes";
 			// Creamos un array asociativo con todos los lotes añadiendo uno que indique si se ha asignado o no
 			
 
@@ -479,7 +479,7 @@ function conexion($bd_config){
 					array_push($lotsAssignats, $lot);
 				}
 			}
-		}
+		}*/
 
 		
 	

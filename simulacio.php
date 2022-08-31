@@ -21,7 +21,7 @@
 	$alumnesSenseAssignar=array();
 	
 	// Obtenemos los alumnos del nivel elegido
-
+	$num_assignacions=0;
 
 	if (strcmp($_POST['tutoria'],"4ESO") ==0){
 
@@ -250,13 +250,12 @@
 		if (strcmp($_POST['tutoria'],"3ESO") ==0){
 
 			// Alumnat de reforç
-			$sentencia = "SELECT A.nia, A.nombre, A.apellido1, A.apellido2, H.puntos, T.id_aula, A.repetidor, A.opcion FROM Historico H, Alumno A, Tutoria T where H.nia = A.nia and A.opcion=\"AP\" and A.id_tutoria like '". $curs."_3ESO%' and banc_llibres=1 and T.id_tutoria=A.id_tutoria and H.curso=\"20". $cursAnterior. "\" and A.repetidor=0 order by H.puntos desc";
+		/*	$sentencia = "SELECT A.nia, A.nombre, A.apellido1, A.apellido2, H.puntos, A.repetidor, A.opcion FROM Historico H, Alumno A, Tutoria T where H.nia = A.nia and A.opcion=\"AP\" and A.id_tutoria like '". $curs."_3ESO%' and banc_llibres=1 and T.id_tutoria=A.id_tutoria and H.curso=\"20". $cursAnterior. "\" and A.repetidor=0 order by H.puntos desc";
 			$alumnosAplicados=executaSentenciaTotsResultats($conexion,$sentencia);
 
 
 			$sentencia="select A.nia, A.nombre, A.apellido1, A.apellido2,0,T.id_aula,A.repetidor,A.opcion from Alumno A, Tutoria T where not exists (select * from Historico H where A.nia = H.nia) and A.id_tutoria like '". $curs . "_3ESO%' and A.opcion=\"AP\" and banc_llibres=1 and T.id_tutoria = A.id_tutoria";
 			$alumnesnous= executaSentenciaTotsResultats($conexion, $sentencia);
-
 
 			foreach ($alumnesnous as $alumne)
 			{
@@ -267,7 +266,6 @@
 			$llibresAplicats=executaSentenciaTotsResultats($conexion,$sentencia);
 			$sentencia="select L.id_lote, sum(E.puntos) as puntos, \"Nou\", L.retirat, L.repartit from Lote L, Ejemplar E where not exists (select * from Historico H where H.id_lote=L.id_lote) and L.id_lote like '3ESOAP%' and E.id_lote=L.id_lote group by L.id_lote order by puntos desc";
 			$lots_nous=executaSentenciaTotsResultats($conexion,$sentencia);
-
 			if (count($lots_nous) !=0){
 				$indiceLlibres=0;
 				$indiceNous=0;
@@ -321,26 +319,29 @@
 				}
 				
 			}
-
-				// Alumnat acadèmic
-			$sentencia = "SELECT A.nia, A.nombre, A.apellido1, A.apellido2, H.puntos, T.id_aula, A.repetidor, A.opcion FROM Historico H, Alumno A, Tutoria T where H.nia = A.nia and A.opcion is null and A.id_tutoria like '". $curs. "_3ESO%' and banc_llibres=1 and T.id_tutoria=A.id_tutoria and H.curso=\"20". $cursAnterior. "\" and A.repetidor=0 order by H.puntos desc";
+		*/
+				// Alumnat acadèmic 
+			$sentencia = "SELECT A.nia, A.nombre, A.apellido1, A.apellido2, H.puntos, A.repetidor, A.opcion FROM Historico H, Alumno A where H.nia = A.nia and A.opcion is null and A.id_tutoria like '". $curs. "_3ESO%' and banc_llibres=1 and H.curso=\"20". $cursAnterior. "\" and A.repetidor=0 order by H.puntos desc";
 			$alumnosAcademicos=executaSentenciaTotsResultats($conexion,$sentencia);
 
 
-			$sentencia="select A.nia, A.nombre, A.apellido1, A.apellido2,0,T.id_aula,A.repetidor,A.opcion from Alumno A, Tutoria T where not exists (select * from Historico H where A.nia = H.nia) and A.id_tutoria like '". $curs. "_3ESO%' and A.opcion=\"AC\"  and banc_llibres=1 and T.id_tutoria = A.id_tutoria";
+			$sentencia="select A.nia, A.nombre, A.apellido1, A.apellido2,0,A.repetidor,A.opcion from Alumno A where not exists (select * from Historico H where A.nia = H.nia) and A.id_tutoria like '". $curs. "_3ESO%' and A.opcion is null  and banc_llibres=1";
 			$alumnesnous= executaSentenciaTotsResultats($conexion, $sentencia);
+
+
+
 
 			foreach ($alumnesnous as $alumne)
 			{
 				array_push($alumnosAcademicos, $alumne);
 			}
-		
-			$sentencia="select H.id_lote, L.repartit, L.retirat, T.id_aula, H.puntos from Historico H, Lote L, Tutoria T, Alumno A where L.id_lote=H.id_lote and H.id_lote like '3ESO_%' and H.id_lote not like '3ESOAP%' and L.repartit=0 and H.curso=\"20" . $cursAnterior. "\" and T.id_tutoria = H.id_tutoria and A.nia= H.nia and A.repetidor=0 order by H.puntos desc, T.id_aula asc ";
+
+			$sentencia="select H.id_lote, L.repartit, L.retirat, H.puntos from Historico H, Lote L, Alumno A where L.id_lote=H.id_lote and H.id_lote like '3ESO%' and L.repartit=0 and H.curso=\"20" . $cursAnterior. "\" and A.nia= H.nia and A.repetidor=0 order by H.puntos desc";
 
 
 			$llibresAcademics=executaSentenciaTotsResultats($conexion,$sentencia);
 			
-			$sentencia="select L.id_lote, sum(E.puntos) as puntos, \"Nou\", L.retirat, L.repartit from Lote L, Ejemplar E where not exists (select * from Historico H where H.id_lote=L.id_lote) and L.id_lote like '3ESO%' and L.id_lote not like '3ESOAP%' and E.id_lote=L.id_lote group by L.id_lote order by puntos desc";
+			$sentencia="select L.id_lote, sum(E.puntos) as puntos, \"Nou\", L.retirat, L.repartit from Lote L, Ejemplar E where L.id_lote not in (select id_lote from Historico H where curso=\"20".$cursAnterior. "\") and L.id_lote like '3ESO%' and E.id_lote=L.id_lote group by L.id_lote order by puntos desc";
 			$lots_nous=executaSentenciaTotsResultats($conexion,$sentencia);
 
 			if (count($lots_nous) !=0){
@@ -364,7 +365,7 @@
 				}
 				$llibresAcademics=$llibresOrdenats;
 			}
-
+			echo (count($llibresAcademics));
 
 			
 			if (count($alumnosAcademicos)> count($llibresAcademics))
@@ -400,10 +401,11 @@
 	}
 	else{
 
-		$sentencia = "SELECT A.nia, A.nombre, A.apellido1, A.apellido2, H.puntos, T.id_aula, A.repetidor, A.opcion FROM Historico H, Alumno A, Tutoria T where H.nia = A.nia and A.opcion is null and A.id_tutoria like '". $curs. "_". $_POST['tutoria']. "%' and banc_llibres=1 and T.id_tutoria=A.id_tutoria and H.curso=\"20" . $cursAnterior. "\" and A.repetidor=0 order by H.puntos desc";
+		$sentencia = "SELECT A.nia, A.nombre, A.apellido1, A.apellido2, H.puntos, A.repetidor, A.opcion FROM Historico H, Alumno A where H.nia = A.nia and A.opcion is null and A.id_tutoria like '". $curs. "_". $_POST['tutoria']. "%' and banc_llibres=1 and H.curso=\"20" . $cursAnterior. "\" and A.repetidor=0 order by H.puntos desc";
 		$alumnos=executaSentenciaTotsResultats($conexion,$sentencia);
 
-		$sentencia="select A.nia, A.nombre, A.apellido1, A.apellido2,0,T.id_aula,A.repetidor,A.opcion from Alumno A, Tutoria T where not exists (select * from Historico H where A.nia = H.nia) and A.id_tutoria like '". $curs. "_" . $_POST['tutoria'] ."%'  and banc_llibres=1 and T.id_tutoria = A.id_tutoria";
+		$sentencia="select A.nia, A.nombre, A.apellido1, A.apellido2,0,A.repetidor,A.opcion from Alumno A where not exists (select * from Historico H where A.nia = H.nia) and A.id_tutoria like '". $curs. "_" . $_POST['tutoria'] ."%'  and banc_llibres=1";
+
 		$alumnesnous= executaSentenciaTotsResultats($conexion, $sentencia);
 
 
@@ -412,10 +414,13 @@
 			array_push($alumnos, $alumne);
 		}
 
-		$sentencia="select H.id_lote, L.repartit, L.retirat, T.id_aula, H.puntos from Historico H, Lote L, Tutoria T, Alumno A where L.id_lote=H.id_lote and H.id_lote like '". $_POST['tutoria']. "_%' and L.repartit=0 and H.curso=\"20".$cursAnterior. "\" and T.id_tutoria = H.id_tutoria and A.nia= H.nia and A.repetidor=0 order by H.puntos desc, T.id_aula asc ";
+		$sentencia="select H.id_lote, L.repartit, L.retirat, H.puntos from Historico H, Lote L, Alumno A where L.id_lote=H.id_lote and H.id_lote like '". $_POST['tutoria']. "_%' and L.repartit=0 and H.curso=\"20".$cursAnterior. "\" and A.nia= H.nia and A.repetidor=0 order by H.puntos desc";
 		$llibres=executaSentenciaTotsResultats($conexion,$sentencia);
 
-		$sentencia="select L.id_lote, sum(E.puntos) as puntos, \"Nou\", L.retirat, L.repartit from Lote L, Ejemplar E where not exists (select * from Historico H where H.id_lote=L.id_lote) and L.id_lote like '". $_POST['tutoria']. "_%' and E.id_lote=L.id_lote group by L.id_lote order by puntos desc";
+		// Lots que no es troben a l'històric
+		$sentencia="select L.id_lote, sum(E.puntos) as puntos, \"Nou\", L.retirat, L.repartit from Lote L, Ejemplar E where L.id_lote not in  (select H.id_lote from Historico H where H.curso=\"20". $cursAnterior. "\") and L.id_lote like '". $_POST['tutoria']. "_%' and E.id_lote=L.id_lote and L.repartit=0 group by L.id_lote order by puntos desc";
+		
+		
 		$lots_nous=executaSentenciaTotsResultats($conexion,$sentencia);
 
 		if (count($lots_nous) !=0){
@@ -439,9 +444,14 @@
 				}
 				$llibres=$llibresOrdenats;
 			}
+			//echo count($llibres);
 
-
-		$assignacio=assignaLotsAlumnes($alumnos, $llibres);
+	
+			/*$sentencia="select L.id_lote, L.repartit, L.retirat, T.id_aula, sum(E.puntos) as puntos from Lote L, Tutoria T, Alumno A, Ejemplar E where A.id_lote=L.id_lote and A.id_tutoria= T.id_tutoria and E.id_lote=L.id_lote and L.repartit=0 and A.repetidor=0 and ";
+			$sentencia =$sentencia . "L.id_lote like '".  $_POST['tutoria']. "%' group by L.id_lote,L.repartit, L.retirat, T.id_aula order by puntos desc";
+			$llibres=executaSentenciaTotsResultats($conexion, $sentencia);
+			echo $sentencia. "<br>";*/
+			$assignacio=assignaLotsAlumnes($alumnos, $llibres);
 		array_push($mostrarAssignacions, $assignacio);
 		
 		

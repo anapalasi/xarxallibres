@@ -37,9 +37,12 @@
 				$sentencia = $sentencia. $contrasenya. "\",\"usuari\")";
 				// Inserim el nou professor
 				executaSentencia($conexion,$sentencia);
+				//echo $sentencia. "<br>";
 				// Xifrem la contrasenya
 				$sentencia ="UPDATE Profesor SET contrasenya=sha2(contrasenya,512) where dni=\"$nif\"";
 				executaSentencia($conexion, $sentencia);
+				//echo $sentencia. "<br>";
+
 				echo $datos[0]. " ". $datos[1] ." " . $datos[2] . " ha sido insertado <br>";
 			}
 			$tutor=$datos[8];

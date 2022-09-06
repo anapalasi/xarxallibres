@@ -229,7 +229,7 @@ function conexion($bd_config){
 	}
 	/* Funcio que calcula les puntuacions dels lots */
 	function puntuacioLotsTutoria($conexion,$tutoria){
-		$sentencia = "select concat(A.nombre, ' ', A.apellido1,' ', A.apellido2) as nombre, E.id_lote, sum(E.puntos) as puntos, A.repetidor, L.repartit, L.folres, L.valoracioglobal from Ejemplar E, Alumno A, Lote L where E.id_lote = A.id_lote and L.id_lote=E.id_lote and A.id_tutoria=\"";
+		$sentencia = "select concat(A.nombre, ' ', A.apellido1,' ', A.apellido2) as nombre, E.id_lote, sum(E.puntos) as puntos, A.repetidor, L.repartit, L.valoracioglobal from Ejemplar E, Alumno A, Lote L where E.id_lote = A.id_lote and L.id_lote=E.id_lote and A.id_tutoria=\"";
 		$sentencia = $sentencia . $tutoria . "\" group by E.id_lote, A.apellido1, A.apellido2, A.nombre, L.repartit, L.folres, L.valoracioglobal,A.repetidor order by A.apellido1, A.apellido2, A.nombre";
 		$resultat=executaSentenciaTotsResultats($conexion,$sentencia);
 		return $resultat;
@@ -237,7 +237,8 @@ function conexion($bd_config){
 
 	/* Funcio per obtenir totes les tutories que tenen llibres */
 	function tutoriasConLibros($conexion){
-		$sentencia = "select id_tutoria, descripcion from Tutoria where id_tutoria like '20%ESO%'"; //or id_tutoria like '20%CFB%'";
+		$curso=calculaCurso();
+		$sentencia = "select id_tutoria, descripcion from Tutoria where id_tutoria like '".$curso."%ESO%'"; //or id_tutoria like '20%CFB%'";
 		$resultat = executaSentenciaTotsResultats($conexion, $sentencia);
 		return $resultat;
 	}

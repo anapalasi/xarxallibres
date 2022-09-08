@@ -41,7 +41,6 @@
 
 <br><a href="simulacioAssignacio.php"> Simulació assignació llibres per cursos </a>
 <br><a href="distribucioLots.php"> Distribucions nous lots per tutories per al següent curs</a>
-<br><a href="nousLots.php"> Crear un nou lot </a>
 <br><a href="distribucioNouCurs.php"> Lliurament lots a nous alumnes </a>
 <br><br><h3 class="texto"> Altres operacions </h3>
         <br> <a href="demanaLot.php"> Actualitzar informacio d'un lot </a>
@@ -57,6 +56,7 @@
 <br><a href="matricula.php"> Actualitza matrícula de l'alumnat </a>
 <br><br>
 <br> <h3 class="texto"> Gestió llibres </h3>
+<br><a href="nousLots.php"> Crear un nou lot </a>
 <br> <a href="esborrarllibres.php"> Esborrar llibres antics </a>
 <br><a href="afegirLlibres.php"> Afegir llibres en bloc </a>
 

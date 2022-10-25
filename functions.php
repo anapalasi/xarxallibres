@@ -266,7 +266,9 @@ function conexion($bd_config){
 
 	/* Funció que torna el nom complet de l'alumne al que pertany un lot */
 	function nomCompletLot($conexion,$lot){
-		$sentencia = "select concat(nombre,' ', apellido1,' ', apellido2) as nombre, id_lote as lote from Alumno where id_lote=\"" . $lot ."\"";
+		$curs=calculaCurso();
+		$nivel=substr($lot,0,4);
+		$sentencia = "select concat(nombre,' ', apellido1,' ', apellido2) as nombre, id_lote as lote from Alumno where id_lote=\"" . $lot ."\" and id_tutoria like '". $curs. "_". $nivel. "%'";
 		$resultat=executaSentencia($conexion,$sentencia);
 		return $resultat;
 	}

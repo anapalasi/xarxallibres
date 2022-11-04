@@ -21,7 +21,7 @@
    <?php
       foreach ($resultat as $llibre) {
         $titulo=$llibre['titulo'];
-          echo "<option value=\"". $llibre['isbn']. "\">". $titulo . "( " .$llibre['id_asignatura']. ") </option>";
+          echo "<option value=\"". $llibre['isbn']. "\">". utf8_encode($titulo) . "( " .$llibre['id_asignatura']. ") </option>";
       }
   ?>
  

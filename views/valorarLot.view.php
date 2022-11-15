@@ -36,7 +36,28 @@
 		echo "<br><p> No hi ha llibres assignats a eixe lot </p><br><br>";
 	}
 	else {
-    echo "<br> <strong> Puntuació del lot de llibres " . $puntuacio. " </strong><br>";
+      
+		// Mostrem informació sobre l'històric
+		$historic=count($resultat);
+                if ($historic !=0){		
+			echo "<h2> Històric </h2>";
+			echo "<table border=\"1\">";
+			echo "<tr><th> Identificador històric </th><th>Punts</th><th>Alumne</th></tr>";
+			foreach ($resultat as $registre){
+				echo "<tr><td align=\"center\">";
+				echo $registre['id_histórico'];
+				echo "</td><td>";
+				echo $registre['puntos'];
+				echo "</td><td>";
+				echo $registre['nombre']. " ". $registre['apellido1']. " ". $registre['apellido2'];
+				echo "</td></tr>";
+			}
+			echo "</table>";
+		}
+
+      echo "<br> <strong> Puntuació del lot de llibres " . $puntuacio. " </strong><br>";
+
+
     // Mostrem els llibres del lot
     echo "<form action=\"actualizaLot.php\" method=\"post\" width=\"100%\">";
     echo "<input type=\"hidden\" name=\"lote\" value=\"". $lote ."\">";

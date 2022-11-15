@@ -33,10 +33,9 @@
 			$existe=executaSentencia($conexion,$sentencia);
 			if (! $existe)
 			{
-				$sentencia="insert into Assignatura (id_asignatura, nombre, codi_dept, id_curso) values (\"";
-				$sentencia = $sentencia. $codigo."\",\"". utf8_encode($datos[2])."\",\"". utf8_encode($datos[3])."\",\"";
-				$sentencia= $sentencia.	utf8_encode($datos[0])."\")";
-				// Inserim el nou professor
+				$sentencia="insert into Asignatura (id_asignatura, nombre, codi_dept, id_curso) values (\"";
+				$sentencia = $sentencia. $codigo."\",\"". $datos[2]."\",\"". $datos[3]."\",\"";
+				$sentencia= $sentencia.	$datos[0]."\")";
 				executaSentencia($conexion,$sentencia);
 				$nuevos++;
 			}

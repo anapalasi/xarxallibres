@@ -14,6 +14,8 @@
 		$nombreCompleto=nomCompletLot($conexion, $_POST['id_lote']);
 		$puntuacio=calculaPuntuacio($conexion, $_POST['id_lote']);
 		$dadesLot=dadesLot($conexion, $_POST['id_lote']);
+		$sentencia ="SELECT H.id_histórico, H.puntos, A.nombre, A.apellido1, A.apellido2 from Historico H, Alumno A where H.nia=A.nia and H.id_lote=\"". $_POST['id_lote']. "\" order by H.id_histórico";
+		$resultat=executaSentenciaTotsResultats($conexion,$sentencia);
 
 	}
 	else {

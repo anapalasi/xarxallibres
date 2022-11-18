@@ -57,6 +57,7 @@
 <br><br>
 <br> <h3 class="texto"> Gestió llibres </h3>
 <br><a href="nousLots.php"> Crear un nou lot </a>
+<br><a href="esborraLot.php"> Esborrar un lot </a>
 <br> <a href="esborrarllibres.php"> Esborrar llibres antics </a>
 <br><a href="afegirLlibres.php"> Afegir llibres en bloc </a>
 

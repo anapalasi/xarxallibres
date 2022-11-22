@@ -30,42 +30,34 @@ $identificador=array();
 $isbn=array();
 $volum=array();
 if (strcmp($tipus,'1eso') == 0){
-	array_push($titols, 'Biologia volum 1');
+	array_push($titols, 'Biologia i Geologia');
 	array_push($identificador, '1ESO_BIO_1_E');
-	array_push($isbn,'9788426397348');
+	array_push($isbn,'9788448627539');
 	array_push($volum, 1);
-	array_push($titols, 'Biologia volum 2');
-	array_push($identificador, '1ESO_BIO_2_E');
-	array_push($isbn,'9788426397348');
-	array_push($volum, 2);
-	array_push($titols, 'Biologia volum 3');
-	array_push($identificador, '1ESO_BIO_3_E');
-	array_push($isbn,'9788426397348');
-	array_push($volum, 3);
 	array_push($titols,'Història volum 1');
 	array_push($identificador, '1ESO_HIS_VAL_1_E');
-	array_push($isbn,'9788467851557');
+	array_push($isbn,'9788468284682');
 	array_push($volum, 1);
 	array_push($titols,'Història volum 2');
 	array_push($identificador, '1ESO_HIS_VAL_2_E');
-	array_push($isbn,'9788467851557');
+	array_push($isbn,'9788468284682');
 	array_push($volum, 2);
-	array_push($titols,'Història volum 3');
-	array_push($identificador, '1ESO_HIS_VAL_3_E');
-	array_push($isbn,'9788467851557');
-	array_push($volum, 3);
 	array_push($titols,'Llengua castellana');
 	array_push($identificador, '1ESO_CAS_1_E');
-	array_push($isbn,'9788468015774');
+	array_push($isbn,'9788430772872');
 	array_push($volum, 1);
-	array_push($titols,'Matemàtiques');
+	array_push($titols,'Matemàtiques volum 1');
 	array_push($identificador, '1ESO_MAT_1_E');
-	array_push($isbn,'9788467578324');
+	array_push($isbn,'9788414305683');
 	array_push($volum, 1);
-	array_push($titols,'Música');
-	array_push($identificador, '1ESO_MUS_1_E');
-	array_push($isbn,'9788430785513');
-	array_push($volum, 1);
+	array_push($titols,'Matemàtiques volum 2');
+	array_push($identificador, '1ESO_MAT_2_E');
+	array_push($isbn,'9788414305683');
+	array_push($volum, 2);
+	array_push($titols,'Matemàtiques volum 3');
+	array_push($identificador, '1ESO_MAT_3_E');
+	array_push($isbn,'9788414305683');
+	array_push($volum, 3);
 	array_push($titols,'Anglés');
 	array_push($identificador, '1ESO_ANG_1_E');
 	array_push($isbn,'9780194666107');
@@ -82,6 +74,10 @@ if (strcmp($tipus,'1eso') == 0){
 	array_push($identificador, '1ESO_VAL_3_E');
 	array_push($isbn,'9788430789795');
 	array_push($volum, 3);
+	array_push($titols,'Tecnologia i Digitalització');
+	array_push($identificador, '1ESO_TEC_1_E');
+	array_push($isbn,'9780190547813');
+	array_push($volum, 1);
 
 
 }
@@ -140,67 +136,53 @@ else{
 		{ 
 			$prefijo=strtoupper($tipus);
 			array_push($titols, 'Biologia i Geologia');
-			array_push($identificador, $prefijo.'_BIO_1_');
-			array_push($isbn,'9788490583326');
+			array_push($identificador, $prefijo.'3ESO_BIO_1_');
+			array_push($isbn,'9788448627683');
 			array_push($volum, 1);
 			array_push($titols,'Història volum 1');
-			array_push($identificador, $prefijo.'_HIS_VAL_1_');
-			array_push($isbn,'9788468234519');
+			array_push($identificador, $prefijo.'3ESO_HIS_VAL_1_');
+			array_push($isbn,'9788468285092');
 			array_push($volum, 1);
 			array_push($titols,'Història volum 2');
-			array_push($identificador, $prefijo. '_HIS_VAL_2_');
-			array_push($isbn,'9788468234519');
+			array_push($identificador, $prefijo. '3ESO_HIS_VAL_2_');
+			array_push($isbn,'9788468285092');
 			array_push($volum, 2);
-			array_push($titols,'Història volum 3');
-			array_push($identificador, $prefijo. '_HIS_VAL_3_');
-			array_push($isbn,'9788468234519');
-			array_push($volum, 3);
 			array_push($titols,'Llengua castellana');
-			array_push($identificador, $prefijo.'_CAS_1_');
-			array_push($isbn,'9788468036571');
+			array_push($identificador, $prefijo.'3ESO_CAS_1_');
+			array_push($isbn,'9788430772902');
 			array_push($volum, 1);
-
-			// Distinguimos las matemáticas
-			if (strcmp($tipus,'3eso')== 0)
-			{
-				array_push($titols,'Matemàtiques');
-				array_push($identificador, '3ESO_MAT_1_');
-				array_push($isbn,'9788467578690');
-				array_push($volum, 1);
-			}
-			else
-			{
-
-				array_push($titols,'Matemàtiques volum 1');
-				array_push($identificador, '3ESOAP_MAT_1_');
-				array_push($isbn,'9788467852981');
-				array_push($volum, 1);
-				array_push($titols,'Matemàtiques volum 2');
-				array_push($identificador, '3ESOAP_MAT_2_');
-				array_push($isbn,'9788467852981');
-				array_push($volum, 2);
-				array_push($titols,'Matemàtiques volum 3');
-				array_push($identificador, '3ESOAP_MAT_3_');
-				array_push($isbn,'9788467852981');
-				array_push($volum, 3);
-			}
-			
+			array_push($titols,'Matemàtiques');
+			array_push($identificador, '3ESO_MAT_1_');
+			array_push($isbn,'9788414305720');
+			array_push($volum, 1);
+			array_push($titols,'Matemàtiques volum 2');
+			array_push($identificador, '3ESO_MAT_2_');
+			array_push($isbn,'9788414305720');
+			array_push($volum, 2);
+			array_push($titols,'Matemàtiques volum 3');
+			array_push($identificador, '3ESO_MAT_3_');
+			array_push($isbn,'9788414305720');
+			array_push($volum, 3);
 			array_push($titols,'Anglés');
-			array_push($identificador, $prefijo. '_ANG_1_');
+			array_push($identificador, $prefijo. '3ESO_ANG_1_');
 			array_push($isbn,'9789963516414');
 			array_push($volum, 1);
 			array_push($titols,'Valencià volum 1');
-			array_push($identificador, $prefijo. '_VAL_1_');
+			array_push($identificador, $prefijo. '3ESO_VAL_1_');
 			array_push($isbn,'9788430789900');
 			array_push($volum, 1);
 			array_push($titols,'Valencià volum 2');
-			array_push($identificador, $prefijo. '_VAL_2_');
+			array_push($identificador, $prefijo. '3ESO_VAL_2_');
 			array_push($isbn,'9788430789900');
 			array_push($volum, 2);
 			array_push($titols,'Valencià volum 3');
-			array_push($identificador, $prefijo.'_VAL_3_');
+			array_push($identificador, $prefijo.'3ESO_VAL_3_');
 			array_push($isbn,'9788430789900');
 			array_push($volum, 3);
+			array_push($titols,'Tecnologia i Digitalització');
+			array_push($identificador, $prefijo. '3ESO_TEC_1_');
+			array_push($isbn,'9780190545482');
+			array_push($volum, 1);
 		}
 	
 		else

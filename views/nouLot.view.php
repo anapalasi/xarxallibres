@@ -19,8 +19,7 @@
 		<select name="tipusLot">
 	  <option value="1eso"> 1r ESO </option>
     <option value="2eso"> 2n ESO </option>
-    <option value="3eso"> 3r ESO Acadèmic</option>
-    <option value="3esoap"> 3r ESO Aplicat</option>
+    <option value="3eso"> 3r ESO </option>
     <option value="4esoac"> 4t ESO Ciències</option>
     <option value="4esoal"> 4t ESO Lletres</option>
     <option value="4esoap"> 4t ESO Aplicat</option>

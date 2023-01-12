@@ -9,7 +9,8 @@ if (!isset($_SESSION['usuario'])) {
 }
 
 $conexion = conexion($bd_config);
-$sentencia="SELECT id_tutoria, descripcion from Tutoria where id_tutoria like '21_%ESO%' or id_tutoria like '21_%CFB%'";
+$curso=calculaCurso();
+$sentencia="SELECT id_tutoria, descripcion from Tutoria where id_tutoria like '" . $curso. "_%ESO%' or id_tutoria like '". $curso. "_%CFB%'";
 
 // Obtenemos las tutorias que tienen libros
 $tutorias = executaSentenciaTotsResultats($conexion, $sentencia);

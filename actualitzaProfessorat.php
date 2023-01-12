@@ -35,11 +35,13 @@
 				$contrasenya= substr($datos[1],0,2).$nif;
 				$contrasenya=strtolower($contrasenya);
 				$sentencia = $sentencia. $contrasenya. "\",\"usuari\")";
+				//echo $sentencia. "<br>";
 				// Inserim el nou professor
 				executaSentencia($conexion,$sentencia);
 				//echo $sentencia. "<br>";
 				// Xifrem la contrasenya
 				$sentencia ="UPDATE Profesor SET contrasenya=sha2(contrasenya,512) where dni=\"$nif\"";
+				//echo $sentencia. "<br>";
 				executaSentencia($conexion, $sentencia);
 				//echo $sentencia. "<br>";
 

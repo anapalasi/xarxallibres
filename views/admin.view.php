@@ -10,7 +10,7 @@
   <title>Bienvenido Administrador</title>
 </head>
 <body class="bg-image">
-  <h1 align="center" class="texto">Hola <?php echo utf8_encode($user['nombre']) ." ". utf8_encode($user['apellido1']) ; ?></h1>
+  <h1 align="center" class="texto">Hola <?php echo $user['nombre'] ." ". $user['apellido1'] ; ?></h1>
 <h2 class="texto"> Operacions que es poden realitzar </h2>
 <br><br>
 <h3 class="texto"> Gestió de recollida de llibres </h3>

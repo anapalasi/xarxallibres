@@ -22,7 +22,7 @@
 
 		echo "<br><br><ul>";
 		foreach ($grupos as $grupo){
-			echo "<li> <a href=\"valoraGrup.php?grup=" . $grupo['id_grupo']. "\"> Valoraci&oacute; llibres: " . utf8_encode($grupo['descripcion']). "</a></li>";
+			echo "<li> <a href=\"valoraGrup.php?grup=" . $grupo['id_grupo']. "\"> Valoraci&oacute; llibres: " . $grupo['descripcion']. "</a></li>";
 		}
 		echo "</ul>";
 

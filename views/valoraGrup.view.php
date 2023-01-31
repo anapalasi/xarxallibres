@@ -12,7 +12,7 @@
 <body class="bg-image">
   <h1 align="center" class="texto"> Valoracio de llibres del grup  </h1>
   <p align="center"> <img src="img/xarxa_llibres-300x150.png" alt="Logo Xarxa Llibres"></p><br>
-  <h2 class="texto">Llistat d'alumnes de <?php echo utf8_encode($grup['descripcion']); ?> </h2>
+  <h2 class="texto">Llistat d'alumnes de <?php echo $grup['descripcion']; ?> </h2>
   <br>
   <?php
           if (count($alumnesNoXarxa) != 0) {
@@ -20,7 +20,7 @@
 	
                 foreach ($alumnesNoXarxa as $alumne)
                 {
-                        echo "<br>" . utf8_encode($alumne["nom"]) . " " . utf8_encode($alumne["ape1"]). " " . utf8_encode($alumne["ape2"]);
+                        echo "<br>" . $alumne["nom"] . " " . $alumne["ape1"]. " " . $alumne["ape2"];
                 }
         }
 ?>
@@ -39,7 +39,7 @@
 		echo "<input type=\"hidden\" name=\"ejemplar[]\" value=\"";
 		echo $llibre["ejemplar"];
 		echo "\">";
-	       	echo  utf8_encode($llibre["nombre"]) . "</td> <td>" . utf8_encode($llibre["apellido1"]);
+	       	echo  $llibre["nombre"] . "</td> <td>" . $llibre["apellido1"];
                 echo  " " . utf8_encode($llibre["apellido2"]) ."</td><td>";
                 echo  $llibre["ejemplar"] . "</td><td>";
 		echo  $llibre["volumen"] . "</td><td>";
@@ -88,7 +88,7 @@
 			}
 			// Comprovaremos si esta seleccionat a la base de dades
 			echo ">";
-			echo utf8_encode($observacio["descripcion"]);
+			echo $observacio["descripcion"];
 			echo "<br>";
 		}
 		echo   "</td></tr>";

@@ -45,14 +45,25 @@
 		foreach ($filas as $valor){
 	  	// Obtenemos los valores separándolos por comas
 			$i=0;
-	  		foreach ($valor as $dato){
-	  			if (strcmp($dato,"0") == 0){
-	  				$dato="NO";
-	  			}
-	  			else{
-	  				if (strcmp($dato,"1") == 0)
-	  					$dato="SÍ";
-	  			}
+			$dato_anterior="";
+			foreach ($valor as $dato){
+				if (strcmp($dato_anterior,"NO XARXA") == 0){
+					$dato="---";
+				}
+				else {
+		  			if (strcmp($dato,"0") == 0){
+		  				$dato="NO";
+	  				}
+	  				else{
+	  					if (strcmp($dato,"1") == 0)
+							$dato="SÍ";
+						else {
+							if ($dato == "NULL")
+								$dato="NO XARXA";
+						}
+					}
+				}
+				$dato_anterior=$dato;
 	  			$pdf->Cell($anchura[$i],10,utf8_decode($dato),1,0,"C");
 	    		$i++;
 	   		 }

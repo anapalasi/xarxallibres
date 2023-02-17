@@ -23,12 +23,15 @@
     <option value="4esoac"> 4t ESO Ciències</option>
     <option value="4esoal"> 4t ESO Lletres</option>
     <option value="4esoap"> 4t ESO Aplicat</option>
+    <option value="1batac"> 1r Batxillerat Ciències </option>
+    <option value="1batco"> 1r Batxillerat no Ciències </option>
 
 
 
 		</select> <br><br>
+<p>    Número de lots a crear <input type="number" name="numero" size="3">
 	
-  <button type="submit" value="submit"> Crear lot </button></form>
+<p><br>  <button type="submit" value="submit"> Crear lot/s </button></form>
 </form>
  <center> <a href="<?php
   if ($usuario['rol'] == 'administrador')

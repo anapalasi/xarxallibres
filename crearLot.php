@@ -23,8 +23,17 @@ foreach ($resultado as $numero){
 }
 $numero=$max+1;
 
+if ($numero == 0)
+	$numero=1;
+
+
 $tipus=$_POST['tipusLot'];
-echo $tipus;
+
+// Obtener de que curso es el lote
+$curso=substr($tipus,0,4);
+
+echo $curso . " : " .$tipus;
+
 $titols=array();
 $identificador=array();
 $isbn=array();
@@ -187,6 +196,7 @@ else{
 	
 		else
 		{
+			if (strcmp($curso,'4eso') == 0) {
 				$prefijo=strtoupper($tipus);
 
 				array_push($titols,'Anglés');
@@ -238,21 +248,51 @@ else{
 						
 					}
 					else{
-						if (strcmp($tipus,'4esoap') == 0){
+						array_push($titols,'Matemàtiques');
+						array_push($identificador, '4ESOAP_MAT_1_');
+						array_push($isbn,'9788490587409');
+						array_push($volum, 1);
+						array_push($titols,'CAAP');
+						array_push($identificador, '4ESOAP_CAAP_1_');
+						array_push($isbn,'9780190508043');
+						array_push($volum, 1);
 							
-							
-								array_push($titols,'Matemàtiques');
-								array_push($identificador, '4ESOAP_MAT_1_');
-								array_push($isbn,'9788490587409');
-								array_push($volum, 1);
-								array_push($titols,'CAAP');
-								array_push($identificador, '4ESOAP_CAAP_1_');
-								array_push($isbn,'9780190508043');
-								array_push($volum, 1);
-							
-						}
 					}
 				}
+			}
+			else {
+				if (strcmp($curso,"1bat") == 0){
+
+					array_push($titols,'Filosofia');
+					array_push($identificador, strtoupper($tipus). '_FIL_1_');
+					array_push($isbn,'9788468286228');
+					array_push($volum, 1);
+					array_push($titols,'Valencià: Llengua i literatura');
+					array_push($identificador, strtoupper($tipus). '_VAL_1_');
+					array_push($isbn,'9788490264454');
+					array_push($volum, 1);
+					array_push($titols,'Lengua castellana y literatura');
+					array_push($identificador, strtoupper($tipus). '_CAS_1_');
+					array_push($isbn,'9788430754403');
+					array_push($volum, 1);
+					array_push($titols,'Anglés');
+					array_push($identificador, strtoupper($tipus). '_ANG_1_');
+					array_push($isbn,'9789925305421');
+					array_push($volum, 1);
+
+					if (strcmp($tipus,'1batac')==0){
+
+						array_push($titols,'Matemàtiques I');
+						array_push($identificador, strtoupper($tipus). '_MAT_1_');
+						array_push($isbn,'978841431165');
+						array_push($volum, 1);
+
+					}
+						
+						
+							
+				}
+			}
 		}
 	}
 }

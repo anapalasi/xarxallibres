@@ -33,6 +33,7 @@
 	
 <p><br>  <button type="submit" value="submit"> Crear lot/s </button></form>
 </form>
+<br>
  <center> <a href="<?php
   if ($usuario['rol'] == 'administrador')
   {

@@ -15,6 +15,9 @@
   
   <br>
   <form action="assignarPuntuacio.php" method="post">
+
+	<p> Crear nous lots per a l'alumnat de tot el nivell <input type="checkbox" name="nivell">
+<br><br><br>
 		<center> <h2 class="texto"> Llibres del lot de <?php echo $tipus; echo " : " .$numero; ?> </h2>
       <br><br>
 		<table border="1" bgcolor="white">
@@ -23,7 +26,8 @@
         Identificador </td><td>Llibre</td><td>Estat</td>
       </tr>
       <?php
-      $i=0;
+	$i=0;
+ 	echo "<input type=\"hidden\" name=\"tipus\" value=\"" . $tipus . "\">";
       while ($i<count($titols)){
         echo "<tr>";
         echo "<td>";

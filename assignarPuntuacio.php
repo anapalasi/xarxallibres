@@ -11,7 +11,31 @@
 	$conexion = conexion($bd_config);
 	
 	$identificador=strtoupper($_POST['lot']);
-	// Crear ellote
+
+	if (isset($_POST['nivell'])== 1)
+	{
+		// Assignació per a tot el nivell
+		// Obtenir el nombre d'alumnat d'una determinada opció
+		$tipus=	$_POST["tipus"];
+		if (strcmp(substr($tipus,0,4),"1bat")==0){
+			$subtipus=substr($tipus,-2,2);
+			if (strcmp($subtipus,"ac") == 0)
+			{
+				echo "Ciències";
+			}
+			else {
+				echo "Comunes";
+			}		
+		}
+		else
+			echo "No es Batxillerat";
+	}
+	else {
+		// Creació d'un sol lot
+		$contador=1;
+	}	
+	// Crear el lote
+	/*
 	$sentencia="insert into Lote (id_lote, puntos, repartit, folres, valoracioglobal, retirat) VALUES (\"";
 	$sentencia = $sentencia . $identificador;
 	$sentencia = $sentencia . "\", 0,0,1,\"\",0)";
@@ -36,7 +60,7 @@
 
 
 	echo "Lot " . strtoupper($_POST["lot"]).  " ha sigut donat d'alta <br>";
-
+	 */
 	echo "<center> <a href=\"";
 
   	if ($usuario['rol'] == 'administrador')

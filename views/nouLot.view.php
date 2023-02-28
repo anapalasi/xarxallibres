@@ -29,7 +29,6 @@
 
 
 		</select> <br><br>
-<p> Assignar a alumnat de tot el nivell <input type="checkbox" name="nivell">
 	
 <p><br>  <button type="submit" value="submit"> Crear lot/s </button></form>
 </form>

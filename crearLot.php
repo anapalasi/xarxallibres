@@ -284,7 +284,7 @@ else{
 
 						array_push($titols,'Matemàtiques I');
 						array_push($identificador, strtoupper($tipus). '_MAT_1_');
-						array_push($isbn,'978841431165');
+						array_push($isbn,'9788414311165');
 						array_push($volum, 1);
 
 					}

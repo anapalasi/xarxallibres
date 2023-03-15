@@ -53,15 +53,16 @@
 		$num=1;
 		foreach ($alumnes as $alumne){
 			// Calculamos el identificador
-			$identificador = $raiz.$i;
+			$identificador = $raiz.$num;
+			$lote=$identificador;
 
 			// Creamos el lote
 
 			$sentencia="insert into Lote (id_lote, puntos, repartit, folres, valoracioglobal, retirat) VALUES (\"";
 			$sentencia = $sentencia . $identificador;
 			$sentencia = $sentencia . "\", 0,0,1,\"\",0)";
-	//		echo $sentencia. "<br>";
-
+			executaSentencia($conexion,$sentencia);
+//				echo $sentencia. "<br>";
 			// Creamos los libros asociados a un lote
 			
 			$i=0;
@@ -69,20 +70,23 @@
 				$pos=strripos($identificador,"_");
 				$raiz_libro=substr($identificador,0,$pos+1);
 			      	$ejemplar_libro = $raiz_libro. $num; 
-				echo $ejemplar_libro.	 "<br>";
+				//echo $ejemplar_libro.	 "<br>";
 						
 				$sentencia ="insert into Ejemplar  (id_ejemplar, puntos, fecha_mod, isbn_libro,volumen_libro,id_lote) values (\"";
 				$sentencia= $sentencia. $ejemplar_libro. "\", ";
-				$sentencia = $sentencia."\"3\"".",\"". $fecha . "\",\"" . $_POST['isbn'][$i]."\",\"". $_POST['volumen'][$i]. "\",\"". strtoupper($_POST['lot']). "\")";
-				echo $sentencia. "<br>";	
-				// executaSentencia($conexion, $sentencia);
+				$sentencia = $sentencia."\"3\"".",\"". $fecha . "\",\"" . $_POST['isbn'][$i]."\",\"". $_POST['volumen'][$i]. "\",\"". strtoupper($lote). "\")";
+//				echo $sentencia. "<br>";	
+				executaSentencia($conexion, $sentencia);
 				$i++;
 			}
 			$num++; 	//Actualizamos el número
 			// Asignamos el lote al alumno
 			$nia=$alumne['nia'];
-			echo $nia. " ". $identificador. "<br>";
+			$sentencia = "update Alumno set id_lote=\"". $lote . "\" where nia=\"". $nia."\"";
+			//echo $sentencia. "<br>";
+			executaSentencia($conexion,$sentencia);
 			$i++;
+			echo "Lote ". $lote. "creado satisfactoriamente <br>";
 		}
 	}
 	else {

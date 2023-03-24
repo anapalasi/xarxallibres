@@ -32,6 +32,10 @@
 		if ($fila !=0){
 			$longitud=strlen($datos[2])-1;
 			$nivel = substr($datos[2],0,$longitud);
+			
+			// Comprobamos si el nivel es Batx
+			if (strcmp(substr($nivel,1,2),"BA") == 0)
+				$nivel=substr($nivel,0,3);
 
 			$codi_asignatura=$datos[3];
 			if (strcmp($codi_asignatura,"GHLOMCE")==0){

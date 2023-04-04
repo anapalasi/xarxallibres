@@ -100,7 +100,8 @@
 				if (strcmp($resultat["isbn"],"")!=0){
 					$grupo=$anyo_dos.$asignatura.substr($tutoria,3,5);
 					$sentencia="select * from Grupo where id_grupo=\"". $grupo . "\"";
-					echo $sentencia. "<br>";
+					$resultado=executaSentencia($conexion,$sentencia);
+					
 					/*/ Comprovar si existeix el grup
                                         $sentencia="select * from Grupo where id_grupo=\"".$grupo."\"";
                                         $resultado=executaSentencia($conexion,$sentencia);

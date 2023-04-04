@@ -98,10 +98,9 @@
 				$resultat=executaSentencia($conexion, $sentencia);
 				
 				if (strcmp($resultat["isbn"],"")!=0){
-					echo "Tiene libro <br>";
-					/*$grupo=$anyo_dos.$asignatura.substr($tutoria,3,5);
+					$grupo=$anyo_dos.$asignatura.substr($tutoria,3,5);
 					echo $grupo. "<br>";
-					/ Comprovar si existeix el grup
+					/*/ Comprovar si existeix el grup
                                         $sentencia="select * from Grupo where id_grupo=\"".$grupo."\"";
                                         $resultado=executaSentencia($conexion,$sentencia);
 					if (strcmp($resultado["descripcion"],"") ==0){

@@ -101,14 +101,21 @@
 					$grupo=$anyo_dos.$asignatura.substr($tutoria,3,5);
 					$sentencia="select * from Grupo where id_grupo=\"". $grupo . "\"";
 					$resultado=executaSentencia($conexion,$sentencia);
-					
-					/*/ Comprovar si existeix el grup
-                                        $sentencia="select * from Grupo where id_grupo=\"".$grupo."\"";
-                                        $resultado=executaSentencia($conexion,$sentencia);
-					if (strcmp($resultado["descripcion"],"") ==0){
-						echo "Con grupo";
-					}
-					 */	
+					 if (strcmp($resultado["descripcion"],"") ==0){
+                                                if (!estaEnArray($senseGrup,$grupo)){
+                                                        // echo "-- ". $asignatura_libro. "<br>";
+                                                        array_push($senseGrup,$grupo);
+                                                }
+                                        }
+                                        // Si el grup existeix inserim l'alumne al grup
+                                        else{
+                                                $insertados=$insertados+1;
+                                                $sentencia ="insert into AlumnoGrupo values(\"". $nia. "\",\"". $grupo."\")";
+//                                              echo $sentencia. "<br>";
+                                                executaSentencia($conexion,$sentencia);
+                                        }
+
+
 				}
 			}	
 		}

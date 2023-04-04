@@ -87,6 +87,29 @@
 
 				}
 			}
+			else {
+				// Batxillerat
+				$nivel=substr($tutoria,3,3);
+				$asignatura= $datos[3];
+				$codigo_asignatura=$nivel."_". $asignatura;
+
+				// Buscamos las asignaturas que tienen libros. 
+				$sentencia="select * from Libro where id_asignatura=\"". $codigo_asignatura."\"";
+				$resultat=executaSentencia($conexion, $sentencia);
+				
+				if (strcmp($resultat["isbn"],"")!=0){
+					echo "Tiene libro <br>";
+					/*$grupo=$anyo_dos.$asignatura.substr($tutoria,3,5);
+					echo $grupo. "<br>";
+					/ Comprovar si existeix el grup
+                                        $sentencia="select * from Grupo where id_grupo=\"".$grupo."\"";
+                                        $resultado=executaSentencia($conexion,$sentencia);
+					if (strcmp($resultado["descripcion"],"") ==0){
+						echo "Con grupo";
+					}
+					 */	
+				}
+			}	
 		}
 	}
 	//Cerramos el archivo
@@ -97,3 +120,4 @@
 	}
 	echo "S'han creat " . $insertados . " associacions alumnat-grup";
 ?>
+

@@ -27,7 +27,7 @@
 		echo "Valoreu els llibres abans de emplenar la seguent secci&oacute; <br>";
 		echo "<ul>";
 		foreach ($alumnosNoValorados as $alumno){
-			echo "<li>". utf8_encode($alumno["nombre"]). " ". utf8_encode($alumno["apellido1"]). " ". utf8_encode($alumno["apellido2"]). "</li>";
+			echo "<li>". $alumno["nombre"]. " ". $alumno["apellido1"]. " ". $alumno["apellido2"]. "</li>";
 		}
 		echo "</ul>";
 	}
@@ -58,7 +58,7 @@
         echo $alumne["nia"];
   echo "\">";
 
-        echo utf8_encode($alumne["nombre"]). " ". utf8_encode($alumne["apellido1"]). " ". utf8_encode($alumne["apellido2"]);
+        echo $alumne["nombre"]. " ". $alumne["apellido1"]. " ". $alumne["apellido2"];
         echo "</td>";
         echo "<td align=\"center\">";
       

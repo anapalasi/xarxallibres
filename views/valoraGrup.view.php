@@ -40,7 +40,7 @@
 		echo $llibre["ejemplar"];
 		echo "\">";
 	       	echo  $llibre["nombre"] . "</td> <td>" . $llibre["apellido1"];
-                echo  " " . utf8_encode($llibre["apellido2"]) ."</td><td>";
+                echo  " " . $llibre["apellido2"] ."</td><td>";
                 echo  $llibre["ejemplar"] . "</td><td>";
 		echo  $llibre["volumen"] . "</td><td>";
 		echo "<select name=\"estat[]\">";

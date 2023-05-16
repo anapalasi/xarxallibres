@@ -108,7 +108,7 @@
 			echo $exemplar;
 			echo "</td>";
 			echo "<td>";
-                        echo utf8_encode($llibre['nombre']);
+                        echo $llibre['nombre'];
                         echo "</td>";
 			echo "<td align=\"center\">";
                         echo $llibre['volumen'];
